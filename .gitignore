@@ -8,5 +8,8 @@ Thumbs.db
 .vscode
 
 # Вспомогательные файлы
+*.iml
 *.log*
 node_modules/
+public/bundle.js
+public/bundle.js.map
