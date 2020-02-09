@@ -5,7 +5,6 @@ import {App} from "./components/app/App.jsx";
 const COUNT_OFFERS = 312;
 
 ReactDOM.render(
-    <App countOffers={COUNT_OFFERS}>
-    </App>,
+    <App countOffers={COUNT_OFFERS} />,
     document.getElementById(`root`)
 );
