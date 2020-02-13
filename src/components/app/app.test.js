@@ -5,7 +5,7 @@ import {App} from "./app.jsx";
 const OFFERS_COUNT = 3;
 const OFFERS_MOCK = [{name: `Beautiful & luxurious apartment at great location`, key: `offer1`}, {name: `Wood and stone place`, key: `offer2`}];
 
-it(`Если приложение успешно загрузилось, то компонент App отрисовался`, () => {
+it(`Если приложение загрузилось, то компонент App отрисовался`, () => {
   const tree = renderer
     .create(<App
       countOffers={OFFERS_COUNT}
