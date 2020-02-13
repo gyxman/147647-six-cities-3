@@ -7,8 +7,10 @@ const OFFERS_MOCK = [{name: `Beautiful & luxurious apartment at great location`,
 
 it(`Если приложение загрузилось, то компонент Main отрисовался`, () => {
   const tree = renderer
-    .create(<Main countOffers={
-      OFFERS_COUNT} offers={OFFERS_MOCK}/>)
+    .create(<Main
+      countOffers={OFFERS_COUNT}
+      offers={OFFERS_MOCK}
+      onOfferTitleClick={() => {}}/>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();
