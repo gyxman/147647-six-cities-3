@@ -175,14 +175,23 @@ exports[`Если приложение загрузилось, то компон
             onMouseLeave={[Function]}
           >
             <div
+              className="place-card__mark"
+            >
+              <span>
+                Premium
+              </span>
+            </div>
+            <div
               className="cities__image-wrapper place-card__image-wrapper"
             >
               <a
                 href="#"
               >
                 <img
+                  alt="Beautiful & luxurious apartment at great location"
                   className="place-card__image"
                   height="200"
+                  src="img"
                   width="260"
                 />
               </a>
@@ -200,11 +209,13 @@ exports[`Если приложение загрузилось, то компон
                     className="place-card__price-value"
                   >
                     €
+                    120
                   </b>
                   <span
                     className="place-card__price-text"
                   >
                     / 
+                    night
                   </span>
                 </div>
                 <button
@@ -236,7 +247,7 @@ exports[`Если приложение загрузилось, то компон
                   <span
                     style={
                       Object {
-                        "width": "80%",
+                        "width": "60%",
                       }
                     }
                   />
@@ -249,14 +260,19 @@ exports[`Если приложение загрузилось, то компон
               </div>
               <h2
                 className="place-card__name"
+                onClick={[Function]}
               >
                 <a
                   href="#"
-                />
+                >
+                  Beautiful & luxurious apartment at great location
+                </a>
               </h2>
               <p
                 className="place-card__type"
-              />
+              >
+                Apartment
+              </p>
             </div>
           </article>
         </div>

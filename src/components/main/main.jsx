@@ -7,6 +7,10 @@ export class Main extends PureComponent {
     super(props);
   }
 
+  _offerTitleClickHandler(offer) {
+    this.props.onOfferTitleClick(offer);
+  }
+
   render() {
     const {offers} = this.props;
 
@@ -60,7 +64,7 @@ export class Main extends PureComponent {
               <span className="places__sorting-type" tabIndex="0">
               Popular
                 <svg className="places__sorting-arrow" width="7" height="4">
-                  <use xlinkHref="#icon-arrow-select"></use>
+                  <use xlinkHref="#icon-arrow-select" />
                 </svg>
               </span>
               <ul className="places__options places__options--custom places__options--opened">
@@ -76,10 +80,10 @@ export class Main extends PureComponent {
               {/*  <option class="places__option" value="top-rated">Top rated first</option>*/}
               {/* </select>*/}
             </form>
-            <PlacesList offers={offers} />
+            <PlacesList offers={offers} onOfferTitleClick={this._offerTitleClickHandler.bind(this)} />
           </section>
           <div className="cities__right-section">
-            <section className="cities__map map"></section>
+            <section className="cities__map map" />
           </div>
         </div>
       </div>
@@ -88,5 +92,6 @@ export class Main extends PureComponent {
 }
 
 Main.propTypes = {
+  onOfferTitleClick: PropTypes.func.isRequired,
   offers: PropTypes.array.isRequired,
 };
