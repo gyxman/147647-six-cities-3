@@ -8,8 +8,9 @@ export class PlaceCard extends PureComponent {
   }
 
   render() {
-    const {onHover, offer} = this.props;
-    const {name, image, price, time, type, isPremium} = offer;
+    const {onHover, onOfferTitleClick, offer} = this.props;
+    const {name, image, price, time, type, isPremium, rating} = offer;
+    const fixRating = Math.round(rating) / 5 * 100;
 
     return (
       <article className="cities__place-card place-card" onMouseEnter={() => onHover(offer)} onMouseLeave={() => onHover(null)}>
@@ -38,11 +39,11 @@ export class PlaceCard extends PureComponent {
           </div>
           <div className="place-card__rating rating">
             <div className="place-card__stars rating__stars">
-              <span style={{width: `80%`}} />
+              <span style={{width: `${fixRating}%`}} />
               <span className="visually-hidden">Rating</span>
             </div>
           </div>
-          <h2 className="place-card__name">
+          <h2 className="place-card__name" onClick={() => onOfferTitleClick(offer)}>
             <a href="#">{name}</a>
           </h2>
           <p className="place-card__type">{type}</p>
@@ -54,13 +55,15 @@ export class PlaceCard extends PureComponent {
 
 PlaceCard.propTypes = {
   onHover: PropTypes.func.isRequired,
+  onOfferTitleClick: PropTypes.func.isRequired,
   offer: PropTypes.shape({
     name: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
     price: PropTypes.string.isRequired,
     time: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
-    isPremium: PropTypes.bool.isRequired
+    isPremium: PropTypes.bool.isRequired,
+    rating: PropTypes.number.isRequired
   }
   ).isRequired,
 };
