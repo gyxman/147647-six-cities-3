@@ -11,6 +11,7 @@ const mock = [
     type: `Apartment`,
     isPremium: true,
     rating: 3.1,
+    coords: [1, 2]
   }
 ];
 
@@ -19,7 +20,9 @@ it(`Если приложение загрузилось, то компонен�
     .create(<Main
       offers={mock}
       onOfferTitleClick={() => {}}
-    />)
+    />, {
+      createNodeMock: () => document.createElement(`div`)
+    })
     .toJSON();
 
   expect(tree).toMatchSnapshot();

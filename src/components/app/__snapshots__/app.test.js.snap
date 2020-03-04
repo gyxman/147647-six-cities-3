@@ -282,6 +282,7 @@ exports[`Если приложение загрузилось, то компон
       >
         <section
           className="cities__map map"
+          id="map"
         />
       </div>
     </div>
