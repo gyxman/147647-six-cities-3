@@ -28,7 +28,8 @@ const mock = [
       picture: `img4`,
       name: `Mike`,
       isSuper: true,
-    }
+    },
+    coords: [52.3809553943508, 4.939309666406198]
   }
 ];
 
@@ -36,7 +37,9 @@ it(`Если приложение загрузилось, то компонен�
   const tree = renderer
     .create(<App
       offers={mock}
-    />)
+    />, {
+      createNodeMock: () => document.createElement(`div`)
+    })
     .toJSON();
 
   expect(tree).toMatchSnapshot();

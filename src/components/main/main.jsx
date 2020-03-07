@@ -1,6 +1,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {PlacesList} from "../places-list/places-list.jsx";
+import {Map} from "../map/map.jsx";
 
 export class Main extends PureComponent {
   constructor(props) {
@@ -83,7 +84,7 @@ export class Main extends PureComponent {
             <PlacesList offers={offers} onOfferTitleClick={this._offerTitleClickHandler.bind(this)} />
           </section>
           <div className="cities__right-section">
-            <section className="cities__map map" />
+            <Map offers={offers.map((offer) => offer.coords)} />
           </div>
         </div>
       </div>
