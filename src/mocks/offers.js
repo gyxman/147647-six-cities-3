@@ -31,7 +31,16 @@ export default [
       name: `Mike`,
       isSuper: true,
     },
-    coords: [52.3909553943508, 4.85309666406198]
+    coords: [52.3909553943508, 4.85309666406198],
+    reviews: [
+      {
+        name: `Max`,
+        image: `https://picsum.photos/54/54`,
+        rating: 4.1,
+        description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+        date: `2019-04-24`
+      }
+    ]
   },
   {
     name: `Wood and stone place`,
@@ -63,7 +72,16 @@ export default [
       name: `Mika`,
       isSuper: false,
     },
-    coords: [52.369553943508, 4.85309666406198]
+    coords: [52.369553943508, 4.85309666406198],
+    reviews: [
+      {
+        name: `Max`,
+        image: `https://picsum.photos/54/54`,
+        rating: 4.1,
+        description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+        date: `2019-04-24`
+      }
+    ]
   },
   {
     name: `Canal View Prinsengracht`,
@@ -95,7 +113,16 @@ export default [
       name: `Mike`,
       isSuper: true,
     },
-    coords: [52.3909553943508, 4.929309666406198]
+    coords: [52.3909553943508, 4.929309666406198],
+    reviews: [
+      {
+        name: `Max`,
+        image: `https://picsum.photos/54/54`,
+        rating: 4.1,
+        description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+        date: `2019-04-24`
+      }
+    ]
   },
   {
     name: `Nice, cozy, warm big bed apartment`,
@@ -127,6 +154,15 @@ export default [
       name: `Mike`,
       isSuper: false,
     },
-    coords: [52.3809553943508, 4.939309666406198]
+    coords: [52.3809553943508, 4.939309666406198],
+    reviews: [
+      {
+        name: `Max`,
+        image: `https://picsum.photos/54/54`,
+        rating: 4.1,
+        description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+        date: `2019-04-24`
+      }
+    ]
   }
 ];
