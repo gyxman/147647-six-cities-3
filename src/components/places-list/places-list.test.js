@@ -19,6 +19,8 @@ it(`Если приложение загрузилось, то компонен�
     .create(<PlacesList
       offers={mock}
       onOfferTitleClick={() => {}}
+      className={`cities__places-`}
+      isTabs={true}
     />)
     .toJSON();
 

@@ -40,11 +40,14 @@ export class Map extends PureComponent {
   }
 
   render() {
-    return (<section className="cities__map map" id="map" ref={this.mapRef} />);
+    const {className} = this.props;
+
+    return (<section className={className + ` map`} id="map" ref={this.mapRef} />);
   }
 }
 
 Map.propTypes = {
+  className: PropTypes.string.isRequired,
   offers: PropTypes.arrayOf(
       PropTypes.arrayOf(
           PropTypes.number.isRequired

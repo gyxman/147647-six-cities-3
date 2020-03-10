@@ -81,10 +81,10 @@ export class Main extends PureComponent {
               {/*  <option class="places__option" value="top-rated">Top rated first</option>*/}
               {/* </select>*/}
             </form>
-            <PlacesList offers={offers} onOfferTitleClick={this._offerTitleClickHandler.bind(this)} />
+            <PlacesList className={`cities__places-`} isTabs={true} offers={offers} onOfferTitleClick={this._offerTitleClickHandler.bind(this)} />
           </section>
           <div className="cities__right-section">
-            <Map offers={offers.map((offer) => offer.coords)} />
+            <Map className={`cities__map`} offers={offers.map((offer) => offer.coords)} />
           </div>
         </div>
       </div>

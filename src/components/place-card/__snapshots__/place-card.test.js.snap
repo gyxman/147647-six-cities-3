@@ -14,7 +14,7 @@ exports[`Если приложение загрузилось, то компон
     </span>
   </div>
   <div
-    className="cities__image-wrapper place-card__image-wrapper"
+    className="cities__place-image-wrapper place-card__image-wrapper"
   >
     <a
       href="#"

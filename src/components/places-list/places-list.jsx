@@ -23,10 +23,10 @@ export class PlacesList extends PureComponent {
   }
 
   render() {
-    const {offers} = this.props;
+    const {offers, className, isTabs} = this.props;
 
-    return (<div className="cities__places-list places__list tabs__content">
-      {offers.map((offer, i) => (<PlaceCard key={`${i}-${offer.name}`} offer={offer} onHover={this._hoverHandler.bind(this)} onOfferTitleClick={this._offerTitleClickHandler.bind(this)} />))}
+    return (<div className={className + `list places__list` + (isTabs ? ` tabs__content` : ``)}>
+      {offers.map((offer, i) => (<PlaceCard key={`${i}-${offer.name}`} className={isTabs ? `cities__place-` : `near-places__`} offer={offer} onHover={this._hoverHandler.bind(this)} onOfferTitleClick={this._offerTitleClickHandler.bind(this)} />))}
     </div>);
   }
 }
@@ -34,4 +34,6 @@ export class PlacesList extends PureComponent {
 PlacesList.propTypes = {
   onOfferTitleClick: PropTypes.func.isRequired,
   offers: PropTypes.array.isRequired,
+  className: PropTypes.string.isRequired,
+  isTabs: PropTypes.bool.isRequired,
 };

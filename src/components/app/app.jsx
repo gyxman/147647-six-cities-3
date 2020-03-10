@@ -14,7 +14,7 @@ export class App extends PureComponent {
   }
 
   _renderApp() {
-    const {offers} = this.props;
+    const {offers, neighbourhoods} = this.props;
     const {place} = this.state;
     const offer = offers[place];
 
@@ -26,7 +26,7 @@ export class App extends PureComponent {
 
     if (offer) {
       return (
-        <PlaceCardDetails offer={offer} />
+        <PlaceCardDetails offer={offer} neighbourhoods={neighbourhoods} onOfferTitleClick={this._offerTitleClickHandler.bind(this)} />
       );
     }
 
@@ -43,7 +43,7 @@ export class App extends PureComponent {
   }
 
   render() {
-    const {offers} = this.props;
+    const {offers, neighbourhoods} = this.props;
     const offer = offers[0];
 
     return <BrowserRouter>
@@ -52,7 +52,7 @@ export class App extends PureComponent {
           {this._renderApp()}
         </Route>
         <Route exact path="/dev-offer">
-          <PlaceCardDetails offer={offer} />
+          <PlaceCardDetails offer={offer} neighbourhoods={neighbourhoods} onOfferTitleClick={this._offerTitleClickHandler.bind(this)} />
         </Route>
       </Switch>
     </BrowserRouter>;
@@ -61,4 +61,5 @@ export class App extends PureComponent {
 
 App.propTypes = {
   offers: PropTypes.array.isRequired,
+  neighbourhoods: PropTypes.array.isRequired,
 };
