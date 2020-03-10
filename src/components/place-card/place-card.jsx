@@ -8,18 +8,18 @@ export class PlaceCard extends PureComponent {
   }
 
   render() {
-    const {onHover, onOfferTitleClick, offer} = this.props;
+    const {onHover, onOfferTitleClick, offer, className} = this.props;
     const {name, image, price, time, type, isPremium, rating} = offer;
     const fixRating = Math.round(rating) / 5 * 100;
 
     return (
-      <article className="cities__place-card place-card" onMouseEnter={() => onHover(offer)} onMouseLeave={() => onHover(null)}>
+      <article className={className + `card place-card`} onMouseEnter={() => onHover(offer)} onMouseLeave={() => onHover(null)}>
         {isPremium &&
           <div className="place-card__mark">
             <span>Premium</span>
           </div>
         }
-        <div className="cities__image-wrapper place-card__image-wrapper">
+        <div className={className + `image-wrapper place-card__image-wrapper`}>
           <a href="#">
             <img className="place-card__image" src={image} width="260" height="200" alt={name} />
           </a>
@@ -66,4 +66,5 @@ PlaceCard.propTypes = {
     rating: PropTypes.number.isRequired
   }
   ).isRequired,
+  className: PropTypes.string.isRequired,
 };

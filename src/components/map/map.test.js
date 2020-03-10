@@ -10,6 +10,7 @@ it(`Если приложение загрузилось, то компонен�
   const tree = renderer
     .create(<Map
       offers={mock}
+      className={`cities__map`}
     />, {
       createNodeMock: () => document.createElement(`div`)
     })

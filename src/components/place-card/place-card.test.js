@@ -18,6 +18,7 @@ it(`Если приложение загрузилось, то компонен�
       offer={mock}
       onHover={() => {}}
       onOfferTitleClick={() => {}}
+      className={`cities__place-`}
     />)
     .toJSON();
 

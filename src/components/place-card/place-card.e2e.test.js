@@ -27,6 +27,7 @@ describe(`Тестирование поведения пользователя �
           offer={offer}
           onHover={onHover}
           onOfferTitleClick={() => {}}
+          className={`cities__place-`}
         />
     );
 
@@ -48,6 +49,7 @@ describe(`Тестирование поведения пользователя �
           offer={offer}
           onHover={() => {}}
           onOfferTitleClick={onOfferTitleClick}
+          className={`cities__place-`}
         />
     );
 
