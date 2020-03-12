@@ -2,63 +2,29 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {PlacesList} from "../places-list/places-list.jsx";
 import {Map} from "../map/map.jsx";
+import {LocationsList} from "../locations-list/locations-list.jsx";
+import {connect} from "react-redux";
+import {ActionCreator} from "../../reducer";
 
-export class Main extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
-
+class Main extends PureComponent {
   _offerTitleClickHandler(offer) {
     this.props.onOfferTitleClick(offer);
   }
 
   render() {
-    const {offers} = this.props;
+    const {city, offers, offersByCity, onCityLinkClick} = this.props;
 
     return (<main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
       <div className="tabs">
-        <section className="locations container">
-          <ul className="locations__list tabs__list">
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Paris</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Cologne</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Brussels</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item tabs__item--active">
-                <span>Amsterdam</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Hamburg</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Dusseldorf</span>
-              </a>
-            </li>
-          </ul>
-        </section>
+        <LocationsList locations={offers.map((offer) => offer.city.name)} currentLocation={city} onCityLinkClick={onCityLinkClick} />
       </div>
       <div className="cities">
         <div className="cities__places-container container">
           <section className="cities__places places">
             <h2 className="visually-hidden">Places</h2>
             <b className="places__found">
-              {offers.length} places to stay in Amsterdam
+              {offersByCity.length} places to stay in {city}
             </b>
             <form className="places__sorting" action="#" method="get">
               <span className="places__sorting-caption">Sort by</span>
@@ -81,7 +47,7 @@ export class Main extends PureComponent {
               {/*  <option class="places__option" value="top-rated">Top rated first</option>*/}
               {/* </select>*/}
             </form>
-            <PlacesList className={`cities__places-`} isTabs={true} offers={offers} onOfferTitleClick={this._offerTitleClickHandler.bind(this)} />
+            <PlacesList className={`cities__places-`} isTabs={true} offers={offersByCity} onOfferTitleClick={this._offerTitleClickHandler.bind(this)} />
           </section>
           <div className="cities__right-section">
             <Map className={`cities__map`} offers={offers.map((offer) => offer.coords)} />
@@ -93,6 +59,24 @@ export class Main extends PureComponent {
 }
 
 Main.propTypes = {
+  city: PropTypes.string.isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
+  onCityLinkClick: PropTypes.func.isRequired,
   offers: PropTypes.array.isRequired,
+  offersByCity: PropTypes.array.isRequired,
 };
+
+const mapStateToProps = (state) => ({
+  city: state.city,
+  offersByCity: state.offers,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onCityLinkClick(city) {
+    dispatch(ActionCreator.changeCity(city));
+    dispatch(ActionCreator.getOffers());
+  },
+});
+
+export {Main};
+export default connect(mapStateToProps, mapDispatchToProps)(Main); // TODO может перенести в app
