@@ -1,8 +1,10 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
-import {Main} from "../main/main.jsx";
+import Main from "../main/main.jsx";
 import {PlaceCardDetails} from "../place-card-details/place-card-details.jsx";
+
+// TODO написать тесты на Reducer и Utils
 
 export class App extends PureComponent {
   constructor(props) {

@@ -2,9 +2,23 @@ import React from "react";
 import renderer from "react-test-renderer";
 import {App} from "./app.jsx";
 import {PlaceType} from "../../enums/place-type.enum";
+import {Provider} from "react-redux";
+import {getOffers} from "../../utils";
+import offers from "../../mocks/offers";
+import configureStore from "redux-mock-store";
+
+const mockStore = configureStore([]);
 
 const mock = [
   {
+    city: {
+      location: {
+        latitude: 52.370216,
+        longitude: 4.895168,
+        zoom: 10
+      },
+      name: `London`
+    },
     name: `Beautiful & luxurious apartment at great location`,
     description: [
       `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
@@ -87,11 +101,18 @@ const mockNeighbourhoods = [
   }];
 
 it(`Если приложение загрузилось, то компонент App отрисовался`, () => {
+  const store = mockStore({
+    city: `Amsterdam`,
+    offers: getOffers(`Amsterdam`, offers), // TODO поправить
+  });
+
   const tree = renderer
-    .create(<App
-      offers={mock}
-      neighbourhoods={mockNeighbourhoods}
-    />, {
+    .create(<Provider store={store}>
+      <App
+        offers={mock}
+        neighbourhoods={mockNeighbourhoods}
+      />
+    </Provider>, {
       createNodeMock: () => document.createElement(`div`)
     })
     .toJSON();
