@@ -1,11 +1,11 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import {App} from "./app.jsx";
-import {PlaceType} from "../../enums/place-type.enum";
-import {Provider} from "react-redux";
-import {getOffers} from "../../utils";
-import offers from "../../mocks/offers";
-import configureStore from "redux-mock-store";
+import React from 'react';
+import renderer from 'react-test-renderer';
+import {App} from './app.jsx';
+import {PlaceType} from '../../enums/place-type.enum';
+import {Provider} from 'react-redux';
+import {getOffers} from '../../utils';
+import offers from '../../mocks/offers';
+import configureStore from 'redux-mock-store';
 
 const mockStore = configureStore([]);
 
@@ -15,20 +15,17 @@ const mock = [
       location: {
         latitude: 52.370216,
         longitude: 4.895168,
-        zoom: 10
+        zoom: 10,
       },
-      name: `London`
+      name: `London`,
     },
     name: `Beautiful & luxurious apartment at great location`,
     description: [
       `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
-      `An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`
+      `An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
     ],
     image: `img`,
-    photos: [
-      `img2`,
-      `img3`
-    ],
+    photos: [`img2`, `img3`],
     price: `120`,
     time: `night`,
     type: `Apartment`,
@@ -36,9 +33,7 @@ const mock = [
     rating: 3.1,
     countOfBedrooms: `3 Bedrooms`,
     maxCountOfGuests: `Max 4 adults`,
-    equipment: [
-      `Wifi`, `Heating`, `Kitchen`, `Cable TV`
-    ],
+    equipment: [`Wifi`, `Heating`, `Kitchen`, `Cable TV`],
     owner: {
       picture: `img4`,
       name: `Mike`,
@@ -51,10 +46,10 @@ const mock = [
         image: `https://picsum.photos/54/54`,
         rating: 4.1,
         description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
-        date: `2019-04-24`
-      }
-    ]
-  }
+        date: `2019-04-24`,
+      },
+    ],
+  },
 ];
 
 const mockNeighbourhoods = [
@@ -62,7 +57,7 @@ const mockNeighbourhoods = [
     name: `Beautiful & luxurious apartment at great location`,
     description: [
       `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
-      `An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`
+      `An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
     ],
     image: `https://picsum.photos/260/200`,
     photos: [
@@ -71,7 +66,7 @@ const mockNeighbourhoods = [
       `https://picsum.photos/260/200`,
       `https://picsum.photos/260/200`,
       `https://picsum.photos/260/200`,
-      `https://picsum.photos/260/200`
+      `https://picsum.photos/260/200`,
     ],
     price: `120`,
     time: `night`,
@@ -80,9 +75,7 @@ const mockNeighbourhoods = [
     rating: 3.1,
     countOfBedrooms: `3 Bedrooms`,
     maxCountOfGuests: `Max 4 adults`,
-    equipment: [
-      `Wifi`, `Heating`, `Kitchen`, `Cable TV`
-    ],
+    equipment: [`Wifi`, `Heating`, `Kitchen`, `Cable TV`],
     owner: {
       picture: `https://picsum.photos/74/74`,
       name: `Mike`,
@@ -95,10 +88,11 @@ const mockNeighbourhoods = [
         image: `https://picsum.photos/54/54`,
         rating: 4.1,
         description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
-        date: `2019-04-24`
-      }
-    ]
-  }];
+        date: `2019-04-24`,
+      },
+    ],
+  },
+];
 
 it(`Если приложение загрузилось, то компонент App отрисовался`, () => {
   const store = mockStore({
@@ -107,14 +101,14 @@ it(`Если приложение загрузилось, то компонен�
   });
 
   const tree = renderer
-    .create(<Provider store={store}>
-      <App
-        offers={mock}
-        neighbourhoods={mockNeighbourhoods}
-      />
-    </Provider>, {
-      createNodeMock: () => document.createElement(`div`)
-    })
+    .create(
+      <Provider store={store}>
+        <App offers={mock} neighbourhoods={mockNeighbourhoods} />
+      </Provider>,
+      {
+        createNodeMock: () => document.createElement(`div`),
+      },
+    )
     .toJSON();
 
   expect(tree).toMatchSnapshot();
