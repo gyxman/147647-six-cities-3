@@ -9,30 +9,53 @@ export class Sort extends PureComponent {
 
     this.state = {
       currencySort: SortType.Popular,
+      isOpen: false,
     };
 
     this._onSortButtonClickHandler = this._onSortButtonClickHandler.bind(this);
+    this._onToggleSortButtonClickHandler = this._onToggleSortButtonClickHandler.bind(
+      this,
+    );
   }
 
   _onSortButtonClickHandler(sort) {
+    const {onSortButtonClick} = this.props;
+
     this.setState({
       currencySort: sort,
     });
+
+    onSortButtonClick(sort);
+  }
+
+  _onToggleSortButtonClickHandler() {
+    const {isOpen} = this.state;
+
+    this.setState({isOpen: !isOpen});
   }
 
   render() {
-    const {currencySort} = this.state;
+    const {currencySort, isOpen} = this.state;
 
     return (
       <form className="places__sorting" action="#" method="get">
         <span className="places__sorting-caption">Sort by</span>
-        <span className="places__sorting-type" tabIndex="0">
+        <span
+          className="places__sorting-type"
+          tabIndex="0"
+          onClick={this._onToggleSortButtonClickHandler}
+        >
           Popular
           <svg className="places__sorting-arrow" width="7" height="4">
             <use xlinkHref="#icon-arrow-select" />
           </svg>
         </span>
-        <ul className="places__options places__options--custom places__options--opened">
+        <ul
+          className={
+            `places__options places__options--custom` +
+            (isOpen ? ` places__options--opened` : ``)
+          }
+        >
           {Sorts.map((sort, index) => (
             <li
               key={index + sort.key}
