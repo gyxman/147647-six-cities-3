@@ -1,9 +1,8 @@
-import React, {PureComponent} from "react";
-import PropTypes from "prop-types";
-import {PlaceCard} from "../place-card/place-card.jsx";
+import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
+import {PlaceCard} from '../place-card/place-card.jsx';
 
 export class PlacesList extends PureComponent {
-
   constructor(props) {
     super(props);
 
@@ -13,8 +12,10 @@ export class PlacesList extends PureComponent {
   }
 
   _hoverHandler(place) {
+    console.log(1);
+
     this.setState({
-      activePlace: place
+      activePlace: place,
     });
   }
 
@@ -25,9 +26,20 @@ export class PlacesList extends PureComponent {
   render() {
     const {offers, className, isTabs} = this.props;
 
-    return (<div className={className + `list places__list` + (isTabs ? ` tabs__content` : ``)}>
-      {offers.map((offer, i) => (<PlaceCard key={`${i}-${offer.name}`} className={isTabs ? `cities__place-` : `near-places__`} offer={offer} onHover={this._hoverHandler.bind(this)} onOfferTitleClick={this._offerTitleClickHandler.bind(this)} />))}
-    </div>);
+    // переделать классы
+    return (
+      <div className={className + `list places__list` + (isTabs ? ` tabs__content` : ``)}>
+        {offers.map((offer, i) => (
+          <PlaceCard
+            key={`${i}-${offer.name}`}
+            className={isTabs ? `cities__place-` : `near-places__`}
+            offer={offer}
+            onHover={this._hoverHandler.bind(this)}
+            onOfferTitleClick={this._offerTitleClickHandler.bind(this)}
+          />
+        ))}
+      </div>
+    );
   }
 }
 
