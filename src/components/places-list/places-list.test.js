@@ -6,7 +6,7 @@ const mock = [
   {
     name: `Beautiful & luxurious apartment at great location`,
     image: `img`,
-    price: `120`,
+    price: 120,
     time: `night`,
     type: `Apartment`,
     isPremium: true,
@@ -18,6 +18,7 @@ it(`Если приложение загрузилось, то компонен�
   const tree = renderer
     .create(<PlacesList
       offers={mock}
+      onOfferTitleHover={() => {}}
       onOfferTitleClick={() => {}}
       className={`cities__places-`}
       isTabs={true}

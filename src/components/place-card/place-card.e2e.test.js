@@ -10,7 +10,7 @@ Enzyme.configure({
 const mock = {
   name: `Beautiful & luxurious apartment at great location`,
   image: `img`,
-  price: `120`,
+  price: 120,
   time: `night`,
   type: `Apartment`,
   isPremium: true,
@@ -20,13 +20,13 @@ const mock = {
 describe(`Тестирование поведения пользователя в карточке отеля`, () => {
   it(`Если пользователь навел курсор на карточку, то передаем информацию о текущей карточке`, () => {
     const offer = mock;
-    const onHover = jest.fn();
+    const onOfferTitleHover = jest.fn();
 
     const placeCard = shallow(
         <PlaceCard
           offer={offer}
-          onHover={onHover}
           onOfferTitleClick={() => {}}
+          onOfferTitleHover={onOfferTitleHover}
           className={`cities__place-`}
         />
     );
@@ -35,9 +35,9 @@ describe(`Тестирование поведения пользователя �
 
     element.simulate(`mouseEnter`);
 
-    expect(onHover).toHaveBeenCalledTimes(1);
+    expect(onOfferTitleHover).toHaveBeenCalledTimes(1);
 
-    expect(onHover.mock.calls[0][0]).toMatchObject(offer);
+    expect(onOfferTitleHover.mock.calls[0][0]).toMatchObject(offer);
   });
 
   it(`Если пользователь нажал на заголовок карточки, то передаем информацию о текущей карточке`, () => {
@@ -47,7 +47,7 @@ describe(`Тестирование поведения пользователя �
     const placeCard = shallow(
         <PlaceCard
           offer={offer}
-          onHover={() => {}}
+          onOfferTitleHover={() => {}}
           onOfferTitleClick={onOfferTitleClick}
           className={`cities__place-`}
         />

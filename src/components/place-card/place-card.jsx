@@ -1,27 +1,36 @@
-import React, {PureComponent} from "react";
-import PropTypes from "prop-types";
+import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 
 export class PlaceCard extends PureComponent {
-
   constructor(props) {
     super(props);
   }
 
   render() {
-    const {onHover, onOfferTitleClick, offer, className} = this.props;
+    const {onOfferTitleHover, onOfferTitleClick, offer, className} = this.props;
     const {name, image, price, time, type, isPremium, rating} = offer;
-    const fixRating = Math.round(rating) / 5 * 100;
+    const fixRating = (Math.round(rating) / 5) * 100;
 
     return (
-      <article className={className + `card place-card`} onMouseEnter={() => onHover(offer)} onMouseLeave={() => onHover(null)}>
-        {isPremium &&
+      <article
+        className={className + `card place-card`}
+        onMouseEnter={() => onOfferTitleHover(offer)}
+        onMouseLeave={() => onOfferTitleHover(null)}
+      >
+        {isPremium && (
           <div className="place-card__mark">
             <span>Premium</span>
           </div>
-        }
+        )}
         <div className={className + `image-wrapper place-card__image-wrapper`}>
           <a href="#">
-            <img className="place-card__image" src={image} width="260" height="200" alt={name} />
+            <img
+              className="place-card__image"
+              src={image}
+              width="260"
+              height="200"
+              alt={name}
+            />
           </a>
         </div>
         <div className="place-card__info">
@@ -54,17 +63,16 @@ export class PlaceCard extends PureComponent {
 }
 
 PlaceCard.propTypes = {
-  onHover: PropTypes.func.isRequired,
+  onOfferTitleHover: PropTypes.func.isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
   offer: PropTypes.shape({
     name: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
-    price: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
     time: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     isPremium: PropTypes.bool.isRequired,
-    rating: PropTypes.number.isRequired
-  }
-  ).isRequired,
+    rating: PropTypes.number.isRequired,
+  }).isRequired,
   className: PropTypes.string.isRequired,
 };

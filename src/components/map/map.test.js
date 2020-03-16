@@ -13,8 +13,7 @@ it(`Если приложение загрузилось, то компонен�
       className={`cities__map`}
     />, {
       createNodeMock: () => document.createElement(`div`)
-    })
-    .toJSON();
+    }).toJSON();
 
   expect(tree).toMatchSnapshot();
 });

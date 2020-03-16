@@ -1,4 +1,4 @@
-import {PlaceType} from "../enums/place-type.enum";
+import {PlaceType} from '../enums/place-type.enum';
 
 export default [
   {
@@ -6,14 +6,14 @@ export default [
       location: {
         latitude: 52.370216,
         longitude: 4.895168,
-        zoom: 10
+        zoom: 10,
       },
-      name: `Amsterdam`
+      name: `Amsterdam`,
     },
     name: `Beautiful & luxurious apartment at great location`,
     description: [
       `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
-      `An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`
+      `An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
     ],
     image: `https://picsum.photos/260/200`,
     photos: [
@@ -22,18 +22,16 @@ export default [
       `https://picsum.photos/260/200`,
       `https://picsum.photos/260/200`,
       `https://picsum.photos/260/200`,
-      `https://picsum.photos/260/200`
+      `https://picsum.photos/260/200`,
     ],
-    price: `120`,
+    price: 120,
     time: `night`,
     type: PlaceType.Apartment,
     isPremium: true,
     rating: 3.1,
     countOfBedrooms: `3 Bedrooms`,
     maxCountOfGuests: `Max 4 adults`,
-    equipment: [
-      `Wifi`, `Heating`, `Kitchen`, `Cable TV`
-    ],
+    equipment: [`Wifi`, `Heating`, `Kitchen`, `Cable TV`],
     owner: {
       picture: `https://picsum.photos/74/74`,
       name: `Mike`,
@@ -46,23 +44,23 @@ export default [
         image: `https://picsum.photos/54/54`,
         rating: 4.1,
         description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
-        date: `2019-04-24`
-      }
-    ]
+        date: `2019-04-24`,
+      },
+    ],
   },
   {
     city: {
       location: {
         latitude: 52.370216,
         longitude: 4.895168,
-        zoom: 10
+        zoom: 10,
       },
-      name: `Moscow`
+      name: `Moscow`,
     },
     name: `Wood and stone place`,
     description: [
       `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
-      `An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`
+      `An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
     ],
     image: `https://picsum.photos/260/200`,
     photos: [
@@ -71,18 +69,16 @@ export default [
       `https://picsum.photos/260/200`,
       `https://picsum.photos/260/200`,
       `https://picsum.photos/260/200`,
-      `https://picsum.photos/260/200`
+      `https://picsum.photos/260/200`,
     ],
-    price: `80`,
+    price: 80,
     time: `night`,
     type: PlaceType.Room,
     isPremium: false,
     rating: 4.3,
     countOfBedrooms: `3 Bedrooms`,
     maxCountOfGuests: `Max 4 adults`,
-    equipment: [
-      `Wifi`, `Heating`, `Kitchen`, `Cable TV`
-    ],
+    equipment: [`Wifi`, `Heating`, `Kitchen`, `Cable TV`],
     owner: {
       picture: `https://picsum.photos/74/74`,
       name: `Mika`,
@@ -95,23 +91,23 @@ export default [
         image: `https://picsum.photos/54/54`,
         rating: 4.1,
         description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
-        date: `2019-04-24`
-      }
-    ]
+        date: `2019-04-24`,
+      },
+    ],
   },
   {
     city: {
       location: {
         latitude: 52.370216,
         longitude: 4.895168,
-        zoom: 10
+        zoom: 10,
       },
-      name: `Paris`
+      name: `Paris`,
     },
     name: `Canal View Prinsengracht`,
     description: [
       `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
-      `An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`
+      `An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
     ],
     image: `https://picsum.photos/260/200`,
     photos: [
@@ -120,18 +116,16 @@ export default [
       `https://picsum.photos/260/200`,
       `https://picsum.photos/260/200`,
       `https://picsum.photos/260/200`,
-      `https://picsum.photos/260/200`
+      `https://picsum.photos/260/200`,
     ],
-    price: `132`,
+    price: 132,
     time: `night`,
     type: PlaceType.Apartment,
     isPremium: false,
     rating: 4.2,
     countOfBedrooms: `3 Bedrooms`,
     maxCountOfGuests: `Max 4 adults`,
-    equipment: [
-      `Wifi`, `Heating`, `Kitchen`, `Cable TV`
-    ],
+    equipment: [`Wifi`, `Heating`, `Kitchen`, `Cable TV`],
     owner: {
       picture: `https://picsum.photos/74/74`,
       name: `Mike`,
@@ -144,23 +138,23 @@ export default [
         image: `https://picsum.photos/54/54`,
         rating: 4.1,
         description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
-        date: `2019-04-24`
-      }
-    ]
+        date: `2019-04-24`,
+      },
+    ],
   },
   {
     city: {
       location: {
         latitude: 52.370216,
         longitude: 4.895168,
-        zoom: 10
+        zoom: 10,
       },
-      name: `London`
+      name: `London`,
     },
     name: `Nice, cozy, warm big bed apartment`,
     description: [
       `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
-      `An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`
+      `An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
     ],
     image: `https://picsum.photos/260/200`,
     photos: [
@@ -169,18 +163,16 @@ export default [
       `https://picsum.photos/260/200`,
       `https://picsum.photos/260/200`,
       `https://picsum.photos/260/200`,
-      `https://picsum.photos/260/200`
+      `https://picsum.photos/260/200`,
     ],
-    price: `180`,
+    price: 180,
     time: `night`,
     type: PlaceType.Apartment,
     isPremium: true,
     rating: 4.4,
     countOfBedrooms: `3 Bedrooms`,
     maxCountOfGuests: `Max 4 adults`,
-    equipment: [
-      `Wifi`, `Heating`, `Kitchen`, `Cable TV`
-    ],
+    equipment: [`Wifi`, `Heating`, `Kitchen`, `Cable TV`],
     owner: {
       picture: `https://picsum.photos/74/74`,
       name: `Mike`,
@@ -193,8 +185,8 @@ export default [
         image: `https://picsum.photos/54/54`,
         rating: 4.1,
         description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
-        date: `2019-04-24`
-      }
-    ]
-  }
+        date: `2019-04-24`,
+      },
+    ],
+  },
 ];

@@ -1,25 +1,47 @@
-import React, {PureComponent} from "react";
-import PropTypes from "prop-types";
-import {ReviewsList} from "../reviews-list/reviews-list.jsx";
-import {Map} from "../map/map.jsx";
-import {PlacesList} from "../places-list/places-list.jsx";
+import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
+import {ReviewsList} from '../reviews-list/reviews-list.jsx';
+import {Map} from '../map/map.jsx';
+import {PlacesList} from '../places-list/places-list.jsx';
 
 export class PlaceCardDetails extends PureComponent {
-
   constructor(props) {
     super(props);
+
+    this.state = {
+      activeOffer: null,
+    };
   }
 
   _offerTitleClickHandler(offer) {
     this.props.onOfferTitleClick(offer);
   }
 
+  _offerTitleHoverHandler(offer) {
+    this.setState({activeOffer: offer});
+  }
+
   render() {
     const {offer} = this.props;
     const {neighbourhoods} = this.props;
-    const {name, description, photos, price, time, type, isPremium, rating, countOfBedrooms, maxCountOfGuests, equipment, owner, reviews} = offer;
+    const {activeOffer} = this.state;
+    const {
+      name,
+      description,
+      photos,
+      price,
+      time,
+      type,
+      isPremium,
+      rating,
+      countOfBedrooms,
+      maxCountOfGuests,
+      equipment,
+      owner,
+      reviews,
+    } = offer;
     const {name: ownerName, picture: ownerPicture, isSuper: ownerIsSuper} = owner;
-    const fixRating = Math.round(rating) / 5 * 100;
+    const fixRating = (Math.round(rating) / 5) * 100;
 
     return (
       <main className="page__main page__main--property">
@@ -35,33 +57,29 @@ export class PlaceCardDetails extends PureComponent {
           </div>
           <div className="property__container container">
             <div className="property__wrapper">
-              {isPremium &&
-              <div className="property__mark">
-                <span>Premium</span>
-              </div>
-              }
+              {isPremium && (
+                <div className="property__mark">
+                  <span>Premium</span>
+                </div>
+              )}
               <div className="property__name-wrapper">
-                <h1 className="property__name">
-                  {name}
-                </h1>
+                <h1 className="property__name">{name}</h1>
                 <button className="property__bookmark-button button" type="button">
                   <svg className="property__bookmark-icon" width="31" height="33">
-                    <use xlinkHref="#icon-bookmark"/>
+                    <use xlinkHref="#icon-bookmark" />
                   </svg>
                   <span className="visually-hidden">To bookmarks</span>
                 </button>
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={{width: `${fixRating}%`}}/>
+                  <span style={{width: `${fixRating}%`}} />
                   <span className="visually-hidden">Rating</span>
                 </div>
                 <span className="property__rating-value rating__value">{rating}</span>
               </div>
               <ul className="property__features">
-                <li className="property__feature property__feature--entire">
-                  {type}
-                </li>
+                <li className="property__feature property__feature--entire">{type}</li>
                 <li className="property__feature property__feature--bedrooms">
                   {countOfBedrooms}
                 </li>
@@ -76,36 +94,58 @@ export class PlaceCardDetails extends PureComponent {
               <div className="property__inside">
                 <h2 className="property__inside-title">What&apos;s inside</h2>
                 <ul className="property__inside-list">
-                  {equipment.map((item, i) => (<li key={`equipment-${i}`} className="property__inside-item">
-                    {item}
-                  </li>))}
+                  {equipment.map((item, i) => (
+                    <li key={`equipment-${i}`} className="property__inside-item">
+                      {item}
+                    </li>
+                  ))}
                 </ul>
               </div>
               <div className="property__host">
                 <h2 className="property__host-title">Meet the host</h2>
                 <div className="property__host-user user">
-                  <div className={`property__avatar-wrapper user__avatar-wrapper ${ownerIsSuper ? `property__avatar-wrapper--pro` : ``}`}>
-                    <img className="property__avatar user__avatar" src={ownerPicture} width="74" height="74" alt={ownerName} />
+                  <div
+                    className={`property__avatar-wrapper user__avatar-wrapper ${
+                      ownerIsSuper ? `property__avatar-wrapper--pro` : ``
+                    }`}
+                  >
+                    <img
+                      className="property__avatar user__avatar"
+                      src={ownerPicture}
+                      width="74"
+                      height="74"
+                      alt={ownerName}
+                    />
                   </div>
-                  <span className="property__user-name">
-                    {ownerName}
-                  </span>
+                  <span className="property__user-name">{ownerName}</span>
                 </div>
                 <div className="property__description">
-                  {description.map((text, i) => (<p key={`text-${i}`} className="property__text">
-                    {text}
-                  </p>))}
+                  {description.map((text, i) => (
+                    <p key={`text-${i}`} className="property__text">
+                      {text}
+                    </p>
+                  ))}
                 </div>
               </div>
               <ReviewsList reviews={reviews} />
             </div>
           </div>
-          <Map className={`property__map`} offers={neighbourhoods.map((neighbourhood) => neighbourhood.coords)} />
+          <Map
+            className={`property__map`}
+            offers={neighbourhoods.map((neighbourhood) => neighbourhood.coords)}
+            activeOffer={activeOffer ? activeOffer.coords : activeOffer}
+          />
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            <PlacesList className={`near-places__`} isTabs={false} offers={neighbourhoods} onOfferTitleClick={this._offerTitleClickHandler.bind(this)} />
+            <PlacesList
+              className={`near-places__`}
+              isTabs={false}
+              offers={neighbourhoods}
+              onOfferTitleClick={this._offerTitleClickHandler.bind(this)}
+              onOfferTitleHover={this._offerTitleHoverHandler.bind(this)}
+            />
           </section>
         </div>
       </main>
@@ -118,7 +158,7 @@ PlaceCardDetails.propTypes = {
     name: PropTypes.string.isRequired,
     description: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
     photos: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    price: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
     time: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     isPremium: PropTypes.bool.isRequired,
@@ -129,16 +169,17 @@ PlaceCardDetails.propTypes = {
     owner: PropTypes.shape({
       picture: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-      isSuper: PropTypes.bool.isRequired
+      isSuper: PropTypes.bool.isRequired,
     }).isRequired,
     coords: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
-    reviews: PropTypes.arrayOf(PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired,
-      rating: PropTypes.number.isRequired,
-      description: PropTypes.string.isRequired,
-      date: PropTypes.string.isRequired,
-    })).isRequired,
+    reviews: PropTypes.arrayOf(
+        PropTypes.shape({
+          name: PropTypes.string.isRequired,
+          image: PropTypes.string.isRequired,
+          rating: PropTypes.number.isRequired,
+          description: PropTypes.string.isRequired,
+          date: PropTypes.string.isRequired,
+        })).isRequired,
   }).isRequired,
   neighbourhoods: PropTypes.array.isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,

@@ -14,7 +14,7 @@ const mock = {
     `img2`,
     `img3`
   ],
-  price: `120`,
+  price: 120,
   time: `night`,
   type: `Apartment`,
   isPremium: true,
@@ -57,7 +57,7 @@ const mockNeighbourhoods = [
       `https://picsum.photos/260/200`,
       `https://picsum.photos/260/200`
     ],
-    price: `120`,
+    price: 120,
     time: `night`,
     type: PlaceType.Apartment,
     isPremium: true,
