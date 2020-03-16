@@ -5,18 +5,10 @@ import {PlaceCard} from '../place-card/place-card.jsx';
 export class PlacesList extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      activePlace: {},
-    };
   }
 
-  _hoverHandler(place) {
-    console.log(1);
-
-    this.setState({
-      activePlace: place,
-    });
+  _hoverHandler(offer) {
+    this.props.onOfferTitleHover(offer);
   }
 
   _offerTitleClickHandler(offer) {
@@ -34,7 +26,7 @@ export class PlacesList extends PureComponent {
             key={`${i}-${offer.name}`}
             className={isTabs ? `cities__place-` : `near-places__`}
             offer={offer}
-            onHover={this._hoverHandler.bind(this)}
+            onOfferTitleHover={this._hoverHandler.bind(this)}
             onOfferTitleClick={this._offerTitleClickHandler.bind(this)}
           />
         ))}
@@ -44,6 +36,7 @@ export class PlacesList extends PureComponent {
 }
 
 PlacesList.propTypes = {
+  onOfferTitleHover: PropTypes.func.isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
   offers: PropTypes.array.isRequired,
   className: PropTypes.string.isRequired,

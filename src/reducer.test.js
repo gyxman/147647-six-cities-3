@@ -104,7 +104,7 @@ const initialStateMock = {
   offers: getOffers(`Amsterdam`, offersMock),
 };
 
-describe('Тестирование редьюсера', () => {
+describe(`Тестирование редьюсера`, () => {
   it(`Если вызываем редьюсер без параметров, то он возвращает начальное состояние`, () => {
     expect(reducer(void 0, {})).toEqual({
       city: `Amsterdam`,
@@ -114,11 +114,10 @@ describe('Тестирование редьюсера', () => {
 
   it(`Если вызываем экшен у редьюсера на изменение города, то он возвращает состояние с измененным городом`, () => {
     expect(
-      reducer(initialStateMock, {
-        type: ActionType.CHANGE_CITY,
-        payload: `Moscow`,
-      }),
-    ).toEqual({
+        reducer(initialStateMock, {
+          type: ActionType.CHANGE_CITY,
+          payload: `Moscow`,
+        })).toEqual({
       city: `Moscow`,
       offers: getOffers(`Amsterdam`, offersMock),
     });
@@ -126,13 +125,11 @@ describe('Тестирование редьюсера', () => {
 
   it(`Если вызываем экшен у редьюсера на получение предложений по аренде, то он возвращает состояние и предложения в зависимости от города`, () => {
     expect(
-      reducer(
-        {city: `Moscow`, offers: getOffers(`Amsterdam`, offersMock)},
-        {
-          type: ActionType.GET_OFFERS,
-        },
-      ),
-    ).toEqual({
+        reducer(
+            {city: `Moscow`, offers: getOffers(`Amsterdam`, offersMock)},
+            {
+              type: ActionType.GET_OFFERS,
+            })).toEqual({
       city: `Moscow`,
       offers: getOffers(`Moscow`, offersMock),
     });
@@ -141,9 +138,9 @@ describe('Тестирование редьюсера', () => {
 
 describe(`Тестирование ActionCreator`, () => {
   it(`Action creator для изменения города возвращает корректное действие`, () => {
-    expect(ActionCreator.changeCity('Moscow')).toEqual({
+    expect(ActionCreator.changeCity(`Moscow`)).toEqual({
       type: ActionType.CHANGE_CITY,
-      payload: 'Moscow',
+      payload: `Moscow`,
     });
   });
 

@@ -7,15 +7,24 @@ import {PlacesList} from '../places-list/places-list.jsx';
 export class PlaceCardDetails extends PureComponent {
   constructor(props) {
     super(props);
+
+    this.state = {
+      activeOffer: null,
+    };
   }
 
   _offerTitleClickHandler(offer) {
     this.props.onOfferTitleClick(offer);
   }
 
+  _offerTitleHoverHandler(offer) {
+    this.setState({activeOffer: offer});
+  }
+
   render() {
     const {offer} = this.props;
     const {neighbourhoods} = this.props;
+    const {activeOffer} = this.state;
     const {
       name,
       description,
@@ -123,7 +132,8 @@ export class PlaceCardDetails extends PureComponent {
           </div>
           <Map
             className={`property__map`}
-            offers={neighbourhoods.map(neighbourhood => neighbourhood.coords)}
+            offers={neighbourhoods.map((neighbourhood) => neighbourhood.coords)}
+            activeOffer={activeOffer ? activeOffer.coords : activeOffer}
           />
         </section>
         <div className="container">
@@ -134,6 +144,7 @@ export class PlaceCardDetails extends PureComponent {
               isTabs={false}
               offers={neighbourhoods}
               onOfferTitleClick={this._offerTitleClickHandler.bind(this)}
+              onOfferTitleHover={this._offerTitleHoverHandler.bind(this)}
             />
           </section>
         </div>
@@ -162,14 +173,13 @@ PlaceCardDetails.propTypes = {
     }).isRequired,
     coords: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
     reviews: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        image: PropTypes.string.isRequired,
-        rating: PropTypes.number.isRequired,
-        description: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
-      }),
-    ).isRequired,
+        PropTypes.shape({
+          name: PropTypes.string.isRequired,
+          image: PropTypes.string.isRequired,
+          rating: PropTypes.number.isRequired,
+          description: PropTypes.string.isRequired,
+          date: PropTypes.string.isRequired,
+        })).isRequired,
   }).isRequired,
   neighbourhoods: PropTypes.array.isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,

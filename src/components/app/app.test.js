@@ -26,7 +26,7 @@ const mock = [
     ],
     image: `img`,
     photos: [`img2`, `img3`],
-    price: `120`,
+    price: 120,
     time: `night`,
     type: `Apartment`,
     isPremium: true,
@@ -68,7 +68,7 @@ const mockNeighbourhoods = [
       `https://picsum.photos/260/200`,
       `https://picsum.photos/260/200`,
     ],
-    price: `120`,
+    price: 120,
     time: `night`,
     type: PlaceType.Apartment,
     isPremium: true,
@@ -98,17 +98,17 @@ it(`Если приложение загрузилось, то компонен�
   const store = mockStore({
     city: `Amsterdam`,
     offers: getOffers(`Amsterdam`, offers), // TODO поправить
+    sort: `Popular`,
   });
 
   const tree = renderer
     .create(
-      <Provider store={store}>
-        <App offers={mock} neighbourhoods={mockNeighbourhoods} />
-      </Provider>,
-      {
-        createNodeMock: () => document.createElement(`div`),
-      },
-    )
+        <Provider store={store}>
+          <App offers={mock} neighbourhoods={mockNeighbourhoods} />
+        </Provider>,
+        {
+          createNodeMock: () => document.createElement(`div`),
+        })
     .toJSON();
 
   expect(tree).toMatchSnapshot();

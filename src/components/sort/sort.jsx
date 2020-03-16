@@ -13,9 +13,7 @@ export class Sort extends PureComponent {
     };
 
     this._onSortButtonClickHandler = this._onSortButtonClickHandler.bind(this);
-    this._onToggleSortButtonClickHandler = this._onToggleSortButtonClickHandler.bind(
-      this,
-    );
+    this._onToggleSortButtonClickHandler = this._onToggleSortButtonClickHandler.bind(this);
   }
 
   _onSortButtonClickHandler(sort) {
@@ -23,6 +21,7 @@ export class Sort extends PureComponent {
 
     this.setState({
       currencySort: sort,
+      isOpen: false,
     });
 
     onSortButtonClick(sort);
@@ -45,7 +44,7 @@ export class Sort extends PureComponent {
           tabIndex="0"
           onClick={this._onToggleSortButtonClickHandler}
         >
-          Popular
+          &nbsp;{Sorts.filter((item) => item.key === currencySort)[0].name}
           <svg className="places__sorting-arrow" width="7" height="4">
             <use xlinkHref="#icon-arrow-select" />
           </svg>

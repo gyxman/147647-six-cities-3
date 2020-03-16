@@ -42,7 +42,7 @@ export class App extends PureComponent {
 
   _offerTitleClickHandler(offer) {
     const {offers} = this.props;
-    const offerIndex = offers.findIndex(item => item.name === offer.name);
+    const offerIndex = offers.findIndex((item) => item.name === offer.name);
 
     this.setState({
       place: offerIndex,

@@ -48,18 +48,16 @@ const offers = [
 it(`Если приложение загрузилось, то компонент Main отрисовался`, () => {
   const tree = renderer
     .create(
-      <Main
-        city={`Amsterdam`}
-        offers={offers}
-        onOfferTitleClick={() => {}}
-        onCityLinkClick={() => {}}
-        offersByCity={offers}
-      />,
-      {
-        createNodeMock: () => document.createElement(`div`),
-      },
-    )
-    .toJSON();
+        <Main
+          city={`Amsterdam`}
+          offers={offers}
+          onOfferTitleClick={() => {}}
+          onCityLinkClick={() => {}}
+          offersByCity={offers}
+        />,
+        {
+          createNodeMock: () => document.createElement(`div`),
+        }).toJSON();
 
   expect(tree).toMatchSnapshot();
 });

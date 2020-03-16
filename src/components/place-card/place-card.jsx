@@ -7,15 +7,15 @@ export class PlaceCard extends PureComponent {
   }
 
   render() {
-    const {onHover, onOfferTitleClick, offer, className} = this.props;
+    const {onOfferTitleHover, onOfferTitleClick, offer, className} = this.props;
     const {name, image, price, time, type, isPremium, rating} = offer;
     const fixRating = (Math.round(rating) / 5) * 100;
 
     return (
       <article
         className={className + `card place-card`}
-        onMouseEnter={() => onHover(offer)}
-        onMouseLeave={() => onHover(null)}
+        onMouseEnter={() => onOfferTitleHover(offer)}
+        onMouseLeave={() => onOfferTitleHover(null)}
       >
         {isPremium && (
           <div className="place-card__mark">
@@ -63,7 +63,7 @@ export class PlaceCard extends PureComponent {
 }
 
 PlaceCard.propTypes = {
-  onHover: PropTypes.func.isRequired,
+  onOfferTitleHover: PropTypes.func.isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
   offer: PropTypes.shape({
     name: PropTypes.string.isRequired,

@@ -14,14 +14,14 @@ const ActionType = {
 };
 
 const ActionCreator = {
-  changeCity: city => ({
+  changeCity: (city) => ({
     type: ActionType.CHANGE_CITY,
     payload: city,
   }),
   getOffers: () => ({
     type: ActionType.GET_OFFERS,
   }),
-  changeSort: sort => ({
+  changeSort: (sort) => ({
     type: ActionType.CHANGE_SORT,
     payload: sort,
   }),

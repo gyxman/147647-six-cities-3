@@ -5,7 +5,7 @@ export const extend = (a, b) => {
 };
 
 export const getOffers = (city, offers) => {
-  return offers.filter(item => item.city.name === city);
+  return offers.filter((item) => item.city.name === city);
 };
 
 export const getSortedOffers = (sort, offers) => {

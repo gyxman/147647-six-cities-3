@@ -6,19 +6,19 @@ const offers = [
     price: 1,
     rating: 2,
     city: {
-      name: 'Moscow',
+      name: `Moscow`,
     },
   },
   {
     price: 2,
     rating: 1,
     city: {
-      name: 'Amsterdam',
+      name: `Amsterdam`,
     },
   },
 ];
 
-describe('Тестирование вспомогательных функций', () => {
+describe(`Тестирование вспомогательных функций`, () => {
   it(`Если мы вызываем функцию extend и передаем в нее 2 обьекта, то получаем на выходе объект, в который скопированы все свойства переданных объектов`, () => {
     expect(extend({a: 1}, {b: 2})).toEqual({a: 1, b: 2});
   });
@@ -29,7 +29,7 @@ describe('Тестирование вспомогательных функций
         price: 1,
         rating: 2,
         city: {
-          name: 'Moscow',
+          name: `Moscow`,
         },
       },
     ]);
@@ -41,14 +41,14 @@ describe('Тестирование вспомогательных функций
         price: 1,
         rating: 2,
         city: {
-          name: 'Moscow',
+          name: `Moscow`,
         },
       },
       {
         price: 2,
         rating: 1,
         city: {
-          name: 'Amsterdam',
+          name: `Amsterdam`,
         },
       },
     ]);
@@ -60,14 +60,14 @@ describe('Тестирование вспомогательных функций
         price: 1,
         rating: 2,
         city: {
-          name: 'Moscow',
+          name: `Moscow`,
         },
       },
       {
         price: 2,
         rating: 1,
         city: {
-          name: 'Amsterdam',
+          name: `Amsterdam`,
         },
       },
     ]);
@@ -79,14 +79,14 @@ describe('Тестирование вспомогательных функций
         price: 2,
         rating: 1,
         city: {
-          name: 'Amsterdam',
+          name: `Amsterdam`,
         },
       },
       {
         price: 1,
         rating: 2,
         city: {
-          name: 'Moscow',
+          name: `Moscow`,
         },
       },
     ]);
@@ -98,14 +98,14 @@ describe('Тестирование вспомогательных функций
         price: 1,
         rating: 2,
         city: {
-          name: 'Moscow',
+          name: `Moscow`,
         },
       },
       {
         price: 2,
         rating: 1,
         city: {
-          name: 'Amsterdam',
+          name: `Amsterdam`,
         },
       },
     ]);

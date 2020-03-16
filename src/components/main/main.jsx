@@ -9,8 +9,20 @@ import {Sort} from '../sort/sort.jsx';
 import {getSortedOffers} from '../../utils';
 
 class Main extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      activeOffer: null,
+    };
+  }
+
   _offerTitleClickHandler(offer) {
     this.props.onOfferTitleClick(offer);
+  }
+
+  _offerTitleHoverHandler(offer) {
+    this.setState({activeOffer: offer});
   }
 
   render() {
@@ -23,12 +35,14 @@ class Main extends PureComponent {
       sort,
     } = this.props;
 
+    const {activeOffer} = this.state;
+
     return (
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <LocationsList
-            locations={offers.map(offer => offer.city.name)}
+            locations={offers.map((offer) => offer.city.name)}
             currentLocation={city}
             onCityLinkClick={onCityLinkClick}
           />
@@ -45,11 +59,16 @@ class Main extends PureComponent {
                 className={`cities__places-`}
                 isTabs={true}
                 offers={getSortedOffers(sort, offersByCity)}
+                onOfferTitleHover={this._offerTitleHoverHandler.bind(this)}
                 onOfferTitleClick={this._offerTitleClickHandler.bind(this)}
               />
             </section>
             <div className="cities__right-section">
-              <Map className={`cities__map`} offers={offers.map(offer => offer.coords)} />
+              <Map
+                className={`cities__map`}
+                offers={offers.map((offer) => offer.coords)}
+                activeOffer={activeOffer ? activeOffer.coords : activeOffer}
+              />
             </div>
           </div>
         </div>
@@ -68,13 +87,13 @@ Main.propTypes = {
   sort: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   city: state.city,
   offersByCity: state.offers,
   sort: state.sort,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   onCityLinkClick(city) {
     dispatch(ActionCreator.changeCity(city));
     dispatch(ActionCreator.getOffers());
@@ -87,6 +106,5 @@ const mapDispatchToProps = dispatch => ({
 
 export {Main};
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Main); // TODO может перенести в app
+    mapStateToProps,
+    mapDispatchToProps)(Main); // TODO может перенести в app
