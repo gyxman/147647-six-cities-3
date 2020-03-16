@@ -19,7 +19,7 @@ const offers = [
     ],
     image: `img`,
     photos: [`img2`, `img3`],
-    price: `120`,
+    price: 120,
     time: `night`,
     type: `Apartment`,
     isPremium: true,
@@ -53,7 +53,9 @@ it(`Если приложение загрузилось, то компонен�
           offers={offers}
           onOfferTitleClick={() => {}}
           onCityLinkClick={() => {}}
+          onSortButtonClick={() => {}}
           offersByCity={offers}
+          sort={`Popular`}
         />,
         {
           createNodeMock: () => document.createElement(`div`),

@@ -26,7 +26,7 @@ const offersMock = [
       `https://picsum.photos/260/200`,
       `https://picsum.photos/260/200`,
     ],
-    price: `120`,
+    price: 120,
     time: `night`,
     type: PlaceType.Apartment,
     isPremium: true,
@@ -73,7 +73,7 @@ const offersMock = [
       `https://picsum.photos/260/200`,
       `https://picsum.photos/260/200`,
     ],
-    price: `80`,
+    price: 80,
     time: `night`,
     type: PlaceType.Room,
     isPremium: false,
@@ -109,6 +109,7 @@ describe(`Тестирование редьюсера`, () => {
     expect(reducer(void 0, {})).toEqual({
       city: `Amsterdam`,
       offers: getOffers(`Amsterdam`, offersMock),
+      sort: `Popular`,
     });
   });
 
