@@ -18,8 +18,8 @@ it(`Если приложение загрузилось, то компонен�
   const tree = renderer
     .create(<PlacesList
       offers={mock}
-      onOfferTitleHover={() => {}}
-      onOfferTitleClick={() => {}}
+      onHover={() => {}}
+      onSelect={() => {}}
       className={`cities__places-`}
       isTabs={true}
     />)
