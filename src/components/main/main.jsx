@@ -7,6 +7,9 @@ import {connect} from 'react-redux';
 import {ActionCreator} from '../../reducer';
 import {Sort} from '../sort/sort.jsx';
 import {getSortedOffers} from '../../utils';
+import withActiveItem from "../../hocs/withActiveItem/with-active-item";
+
+const PlacesListWrapped = withActiveItem(PlacesList);
 
 class Main extends PureComponent {
   constructor(props) {
@@ -55,13 +58,11 @@ class Main extends PureComponent {
                 {offersByCity.length} places to stay in {city}
               </b>
               <Sort onSortButtonClick={onSortButtonClick} />
-              <PlacesList
-                className={`cities__places-`}
+              <PlacesListWrapped className={`cities__places-`}
                 isTabs={true}
                 offers={getSortedOffers(sort, offersByCity)}
-                onOfferTitleHover={this._offerTitleHoverHandler.bind(this)}
-                onOfferTitleClick={this._offerTitleClickHandler.bind(this)}
-              />
+                onHover={this._offerTitleHoverHandler.bind(this)}
+                onSelect={this._offerTitleClickHandler.bind(this)} />
             </section>
             <div className="cities__right-section">
               <Map

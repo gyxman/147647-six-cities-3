@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import {ReviewsList} from '../reviews-list/reviews-list.jsx';
 import {Map} from '../map/map.jsx';
 import {PlacesList} from '../places-list/places-list.jsx';
+import withActiveItem from "../../hocs/withActiveItem/with-active-item";
+
+const PlacesListWrapped = withActiveItem(PlacesList);
 
 export class PlaceCardDetails extends PureComponent {
   constructor(props) {
@@ -139,13 +142,11 @@ export class PlaceCardDetails extends PureComponent {
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            <PlacesList
-              className={`near-places__`}
+            <PlacesListWrapped className={`near-places__`}
               isTabs={false}
               offers={neighbourhoods}
-              onOfferTitleClick={this._offerTitleClickHandler.bind(this)}
-              onOfferTitleHover={this._offerTitleHoverHandler.bind(this)}
-            />
+              onHover={this._offerTitleHoverHandler.bind(this)}
+              onSelect={this._offerTitleClickHandler.bind(this)} />
           </section>
         </div>
       </main>
