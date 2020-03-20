@@ -63,3 +63,22 @@ it(`Если приложение загрузилось, то компонен�
 
   expect(tree).toMatchSnapshot();
 });
+
+it(`Если приложение загрузилось, но список предложений пуст, то компонент Main отрисовался`, () => {
+  const tree = renderer
+    .create(
+        <Main
+          city={`Amsterdam`}
+          offers={[]}
+          onOfferTitleClick={() => {}}
+          onCityLinkClick={() => {}}
+          onSortButtonClick={() => {}}
+          offersByCity={[]}
+          sort={`Popular`}
+        />,
+        {
+          createNodeMock: () => document.createElement(`div`),
+        }).toJSON();
+
+  expect(tree).toMatchSnapshot();
+});
