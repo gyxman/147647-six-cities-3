@@ -8,6 +8,7 @@ import {ActionCreator} from '../../reducer';
 import {Sort} from '../sort/sort.jsx';
 import {getSortedOffers} from '../../utils';
 import withActiveItem from "../../hocs/withActiveItem/with-active-item";
+import Empty from "../empty/empty.jsx";
 
 const PlacesListWrapped = withActiveItem(PlacesList);
 
@@ -28,17 +29,49 @@ class Main extends PureComponent {
     this.setState({activeOffer: offer});
   }
 
-  render() {
+  _renderApp() {
     const {
       city,
-      offers,
       offersByCity,
-      onCityLinkClick,
       onSortButtonClick,
       sort,
     } = this.props;
 
     const {activeOffer} = this.state;
+
+    if (offersByCity.length) {
+      return (<div className="cities__places-container container">
+        <section className="cities__places places">
+          <h2 className="visually-hidden">Places</h2>
+          <b className="places__found">
+            {offersByCity.length} places to stay in {city}
+          </b>
+          <Sort onSortButtonClick={onSortButtonClick} />
+          <PlacesListWrapped className={`cities__places-`}
+            isTabs={true}
+            offers={getSortedOffers(sort, offersByCity)}
+            onHover={this._offerTitleHoverHandler.bind(this)}
+            onSelect={this._offerTitleClickHandler.bind(this)} />
+        </section>
+        <div className="cities__right-section">
+          <Map
+            className={`cities__map`}
+            offers={offersByCity.map((offer) => offer.coords)}
+            activeOffer={activeOffer ? activeOffer.coords : activeOffer}
+          />
+        </div>
+      </div>);
+    }
+
+    return <Empty />;
+  }
+
+  render() {
+    const {
+      city,
+      offers,
+      onCityLinkClick,
+    } = this.props;
 
     return (
       <main className="page__main page__main--index">
@@ -51,33 +84,14 @@ class Main extends PureComponent {
           />
         </div>
         <div className="cities">
-          <div className="cities__places-container container">
-            <section className="cities__places places">
-              <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">
-                {offersByCity.length} places to stay in {city}
-              </b>
-              <Sort onSortButtonClick={onSortButtonClick} />
-              <PlacesListWrapped className={`cities__places-`}
-                isTabs={true}
-                offers={getSortedOffers(sort, offersByCity)}
-                onHover={this._offerTitleHoverHandler.bind(this)}
-                onSelect={this._offerTitleClickHandler.bind(this)} />
-            </section>
-            <div className="cities__right-section">
-              <Map
-                className={`cities__map`}
-                offers={offers.map((offer) => offer.coords)}
-                activeOffer={activeOffer ? activeOffer.coords : activeOffer}
-              />
-            </div>
-          </div>
+          {this._renderApp()}
         </div>
       </main>
     );
   }
 }
 
+// TODO убрать offers из пропсов
 Main.propTypes = {
   city: PropTypes.string.isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
