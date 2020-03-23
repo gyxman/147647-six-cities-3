@@ -1,7 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {ReviewsList} from '../reviews-list/reviews-list.jsx';
-import {Map} from '../map/map.jsx';
 import {PlacesList} from '../places-list/places-list.jsx';
 import withActiveItem from "../../hocs/withActiveItem/with-active-item";
 
@@ -133,11 +132,11 @@ export class PlaceCardDetails extends PureComponent {
               <ReviewsList reviews={reviews} />
             </div>
           </div>
-          <Map
+          {/*<Map
             className={`property__map`}
             offers={neighbourhoods.map((neighbourhood) => neighbourhood.coords)}
             activeOffer={activeOffer ? activeOffer.coords : activeOffer}
-          />
+          />*/}
         </section>
         <div className="container">
           <section className="near-places places">

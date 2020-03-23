@@ -115,10 +115,10 @@ describe(`Тестирование редьюсера`, () => {
 
   it(`Если вызываем экшен у редьюсера на изменение города, то он возвращает состояние с измененным городом`, () => {
     expect(
-        reducer(initialStateMock, {
-          type: ActionType.CHANGE_CITY,
-          payload: `Moscow`,
-        })).toEqual({
+      reducer(initialStateMock, {
+        type: ActionType.CHANGE_CITY,
+        payload: `Moscow`,
+      })).toEqual({
       city: `Moscow`,
       offers: getOffers(`Amsterdam`, offersMock),
     });
@@ -126,11 +126,11 @@ describe(`Тестирование редьюсера`, () => {
 
   it(`Если вызываем экшен у редьюсера на получение предложений по аренде, то он возвращает состояние и предложения в зависимости от города`, () => {
     expect(
-        reducer(
-            {city: `Moscow`, offers: getOffers(`Amsterdam`, offersMock)},
-            {
-              type: ActionType.GET_OFFERS,
-            })).toEqual({
+      reducer(
+        {city: `Moscow`, offers: getOffers(`Amsterdam`, offersMock)},
+        {
+          type: ActionType.GET_OFFERS,
+        })).toEqual({
       city: `Moscow`,
       offers: getOffers(`Moscow`, offersMock),
     });

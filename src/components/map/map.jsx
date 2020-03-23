@@ -20,7 +20,9 @@ export class Map extends React.Component {
 
 
   componentDidMount() {
-    const {offers} = this.props;
+    console.log(this.props)
+
+    const {offersByCity} = this.props;
     const {markers} = this.state;
 
     const icon = leaflet.icon({
@@ -48,7 +50,7 @@ export class Map extends React.Component {
             attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`,
           }).addTo(this.map);
 
-    offers.forEach((offer) => {
+    offersByCity.forEach((offer) => {
       markers[offer] = leaflet.marker(offer, {icon}).addTo(this.map);
     });
   }
@@ -86,8 +88,8 @@ export class Map extends React.Component {
 }
 
 Map.propTypes = {
-  className: PropTypes.string.isRequired,
-  offers: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number.isRequired).isRequired)
+  // className: PropTypes.string.isRequired,
+  offersByCity: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number.isRequired).isRequired)
     .isRequired,
   activeOffer: PropTypes.arrayOf(PropTypes.number),
 };
