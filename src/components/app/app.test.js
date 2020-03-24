@@ -1,7 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {App} from './app.jsx';
-import {PlaceType} from '../../enums/place-type.enum';
 import {Provider} from 'react-redux';
 import {getOffers} from '../../utils';
 import offers from '../../mocks/offers';
@@ -12,87 +11,48 @@ const mockStore = configureStore([]);
 const mock = [
   {
     city: {
-      location: {
-        latitude: 52.370216,
-        longitude: 4.895168,
-        zoom: 10,
-      },
-      name: `London`,
+      name: `Brussels`,
+      location: {latitude: 50.846557, longitude: 4.351697, zoom: 13}
     },
-    name: `Beautiful & luxurious apartment at great location`,
-    description: [
-      `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
-      `An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
-    ],
-    image: `img`,
-    photos: [`img2`, `img3`],
-    price: 120,
-    time: `night`,
-    type: `Apartment`,
+    images: [`https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/15.jpg`, `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/10.jpg`, `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/17.jpg`, `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/9.jpg`, `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/11.jpg`, `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/13.jpg`, `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/19.jpg`, `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/7.jpg`, `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/2.jpg`, `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/3.jpg`, `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/16.jpg`, `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/8.jpg`, `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/4.jpg`, `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/5.jpg`],
+    title: `Amazing and Extremely Central Flat`,
+    rating: 2.2,
+    type: `apartment`,
+    bedrooms: 4,
+    maxAdults: 7,
+    price: 348,
+    goods: [`Breakfast`, `Washer`, `Laptop friendly workspace`],
+    host: {id: 25, name: `Angelina`, avatarUrl: `img/avatar-angelina.jpg`, isPro: true},
+    description: `I am happy to welcome you to my apartment in the city center! Three words: location, cosy and chic!`,
+    location: {latitude: 50.828556999999996, longitude: 4.362697, zoom: 16},
+    id: 1,
+    previewImage: `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/4.jpg`,
     isPremium: true,
-    rating: 3.1,
-    countOfBedrooms: `3 Bedrooms`,
-    maxCountOfGuests: `Max 4 adults`,
-    equipment: [`Wifi`, `Heating`, `Kitchen`, `Cable TV`],
-    owner: {
-      picture: `img4`,
-      name: `Mike`,
-      isSuper: true,
-    },
-    coords: [52.3809553943508, 4.939309666406198],
-    reviews: [
-      {
-        name: `Max`,
-        image: `https://picsum.photos/54/54`,
-        rating: 4.1,
-        description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
-        date: `2019-04-24`,
-      },
-    ],
+    isFavorite: false
   },
+  {
+    city: {
+      name: `Brussels`,
+      location: {latitude: 50.846557, longitude: 4.351697, zoom: 13}
+    },
+    images: [`https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/15.jpg`, `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/10.jpg`, `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/17.jpg`, `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/9.jpg`, `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/11.jpg`, `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/13.jpg`, `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/19.jpg`, `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/7.jpg`, `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/2.jpg`, `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/3.jpg`, `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/16.jpg`, `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/8.jpg`, `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/4.jpg`, `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/5.jpg`],
+    title: `Amazing and Extremely Central Flat`,
+    rating: 2.2,
+    type: `apartment`,
+    bedrooms: 4,
+    maxAdults: 7,
+    price: 348,
+    goods: [`Breakfast`, `Washer`, `Laptop friendly workspace`],
+    host: {id: 25, name: `Angelina`, avatarUrl: `img/avatar-angelina.jpg`, isPro: true},
+    description: `I am happy to welcome you to my apartment in the city center! Three words: location, cosy and chic!`,
+    location: {latitude: 50.828556999999996, longitude: 4.362697, zoom: 16},
+    id: 1,
+    previewImage: `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/4.jpg`,
+    isPremium: true,
+    isFavorite: false
+  }
 ];
 
-const mockNeighbourhoods = [
-  {
-    name: `Beautiful & luxurious apartment at great location`,
-    description: [
-      `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
-      `An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
-    ],
-    image: `https://picsum.photos/260/200`,
-    photos: [
-      `https://picsum.photos/260/200`,
-      `https://picsum.photos/260/200`,
-      `https://picsum.photos/260/200`,
-      `https://picsum.photos/260/200`,
-      `https://picsum.photos/260/200`,
-      `https://picsum.photos/260/200`,
-    ],
-    price: 120,
-    time: `night`,
-    type: PlaceType.Apartment,
-    isPremium: true,
-    rating: 3.1,
-    countOfBedrooms: `3 Bedrooms`,
-    maxCountOfGuests: `Max 4 adults`,
-    equipment: [`Wifi`, `Heating`, `Kitchen`, `Cable TV`],
-    owner: {
-      picture: `https://picsum.photos/74/74`,
-      name: `Mike`,
-      isSuper: true,
-    },
-    coords: [52.3909553943508, 4.85309666406198],
-    reviews: [
-      {
-        name: `Max`,
-        image: `https://picsum.photos/54/54`,
-        rating: 4.1,
-        description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
-        date: `2019-04-24`,
-      },
-    ],
-  },
-];
 
 it(`Если приложение загрузилось, то компонент App отрисовался`, () => {
   const store = mockStore({
@@ -104,7 +64,10 @@ it(`Если приложение загрузилось, то компонен�
   const tree = renderer
     .create(
         <Provider store={store}>
-          <App offers={mock} neighbourhoods={mockNeighbourhoods} />
+          <App cities={[`Амстердам`]} city={`Амстердам`} sort={`popular`} offers={mock} onCityLinkClick={() => {
+          }} onSortButtonClick={() => {
+          }} onOfferTitleClick={() => {
+          }}/>
         </Provider>,
         {
           createNodeMock: () => document.createElement(`div`),

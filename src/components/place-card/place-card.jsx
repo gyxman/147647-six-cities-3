@@ -8,7 +8,8 @@ export class PlaceCard extends PureComponent {
 
   render() {
     const {onOfferTitleHover, onOfferTitleClick, offer, className} = this.props;
-    const {name, image, price, time, type, isPremium, rating} = offer;
+
+    const {title, previewImage, price, type, isPremium, rating} = offer;
     const fixRating = (Math.round(rating) / 5) * 100;
 
     return (
@@ -26,10 +27,10 @@ export class PlaceCard extends PureComponent {
           <a href="#">
             <img
               className="place-card__image"
-              src={image}
+              src={previewImage}
               width="260"
               height="200"
-              alt={name}
+              alt={title}
             />
           </a>
         </div>
@@ -37,7 +38,7 @@ export class PlaceCard extends PureComponent {
           <div className="place-card__price-wrapper">
             <div className="place-card__price">
               <b className="place-card__price-value">&euro;{price}</b>
-              <span className="place-card__price-text">&#47;&nbsp;{time}</span>
+              <span className="place-card__price-text">&#47;&nbsp;night</span>
             </div>
             <button className="place-card__bookmark-button button" type="button">
               <svg className="place-card__bookmark-icon" width="18" height="19">
@@ -53,7 +54,7 @@ export class PlaceCard extends PureComponent {
             </div>
           </div>
           <h2 className="place-card__name" onClick={() => onOfferTitleClick(offer)}>
-            <a href="#">{name}</a>
+            <a href="#">{title}</a>
           </h2>
           <p className="place-card__type">{type}</p>
         </div>
@@ -66,10 +67,9 @@ PlaceCard.propTypes = {
   onOfferTitleHover: PropTypes.func.isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
   offer: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    previewImage: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
-    time: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     isPremium: PropTypes.bool.isRequired,
     rating: PropTypes.number.isRequired,

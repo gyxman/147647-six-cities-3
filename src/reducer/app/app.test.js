@@ -1,6 +1,6 @@
-import {ActionCreator, ActionType, reducer} from './reducer.js';
-import {getOffers} from './utils';
-import {PlaceType} from './enums/place-type.enum';
+import {ActionCreator, ActionType, reducer} from './app.js';
+import {getOffers} from '../../utils';
+import {PlaceType} from '../../enums/place-type.enum';
 
 const offersMock = [
   {
@@ -107,8 +107,8 @@ const initialStateMock = {
 describe(`Тестирование редьюсера`, () => {
   it(`Если вызываем редьюсер без параметров, то он возвращает начальное состояние`, () => {
     expect(reducer(void 0, {})).toEqual({
+      cities: [],
       city: `Amsterdam`,
-      offers: getOffers(`Amsterdam`, offersMock),
       sort: `Popular`,
     });
   });
@@ -127,7 +127,7 @@ describe(`Тестирование редьюсера`, () => {
   it(`Если вызываем экшен у редьюсера на получение предложений по аренде, то он возвращает состояние и предложения в зависимости от города`, () => {
     expect(
         reducer(
-            {city: `Moscow`, offers: getOffers(`Amsterdam`, offersMock)},
+            {city: `Moscow`, offers: getOffers(`Moscow`, offersMock)},
             {
               type: ActionType.GET_OFFERS,
             })).toEqual({
@@ -138,6 +138,13 @@ describe(`Тестирование редьюсера`, () => {
 });
 
 describe(`Тестирование ActionCreator`, () => {
+  it(`Action creator для добавление городов возвращает корректное действие`, () => {
+    expect(ActionCreator.addCities([`Moscow`, `Amsterdam`])).toEqual({
+      type: ActionType.ADD_CITIES,
+      payload: [`Moscow`, `Amsterdam`],
+    });
+  });
+
   it(`Action creator для изменения города возвращает корректное действие`, () => {
     expect(ActionCreator.changeCity(`Moscow`)).toEqual({
       type: ActionType.CHANGE_CITY,
@@ -146,8 +153,9 @@ describe(`Тестирование ActionCreator`, () => {
   });
 
   it(`Action creator для запроса списка предложений возвращает корректное действие`, () => {
-    expect(ActionCreator.getOffers()).toEqual({
-      type: ActionType.GET_OFFERS,
+    expect(ActionCreator.changeSort(`popular`)).toEqual({
+      type: ActionType.CHANGE_SORT,
+      payload: `popular`,
     });
   });
 });

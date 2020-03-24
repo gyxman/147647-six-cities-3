@@ -49,7 +49,7 @@ export class Map extends React.Component {
           }).addTo(this.map);
 
     offers.forEach((offer) => {
-      markers[offer] = leaflet.marker(offer, {icon}).addTo(this.map);
+      markers[offer] = leaflet.marker([offer.latitude, offer.longitude], {icon}).addTo(this.map);
     });
   }
 
@@ -59,7 +59,7 @@ export class Map extends React.Component {
       iconSize: [30, 30],
     });
 
-    this.activeOffer = leaflet.marker(dot, {icon}).addTo(this.map);
+    this.activeOffer = leaflet.marker([dot.latitude, dot.longitude], {icon}).addTo(this.map);
   }
 
   _unrenderDot(dot) {
@@ -87,7 +87,6 @@ export class Map extends React.Component {
 
 Map.propTypes = {
   className: PropTypes.string.isRequired,
-  offers: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number.isRequired).isRequired)
-    .isRequired,
+  offers: PropTypes.array.isRequired,
   activeOffer: PropTypes.arrayOf(PropTypes.number),
 };
