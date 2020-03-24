@@ -52,3 +52,21 @@ export const getSortedOffers = (sort, offers) => {
 
   return offers;
 };
+
+// TODO написать тест
+export const dataMapper = (offers) => {
+  return offers.map((offer) => {
+    const target = Object.assign({}, offer);
+    target.previewImage = offer.preview_image;
+    delete target.preview_image;
+    target.isPremium = offer.is_premium;
+    delete target.is_premium;
+    target.isFavorite = offer.is_favorite;
+    delete target.is_favorite;
+    target.host.avatarUrl = offer.host.avatar_url;
+    delete target.host.avatar_url;
+    target.host.isPro = offer.host.is_pro;
+    delete target.host.is_pro;
+    return target;
+  });
+};

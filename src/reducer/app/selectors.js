@@ -8,14 +8,14 @@ export const getCity = (state) => state[NameSpace.APP].city;
 export const getSort = (state) => state[NameSpace.APP].sort;
 
 export const getCities = createSelector(
-  getOffers,
-  (offers) => {
-    const uniqCities = new Set();
+    getOffers,
+    (offers) => {
+      const uniqCities = new Set();
 
-    offers.forEach(({city: {name}}) => uniqCities.add(name));
+      offers.forEach(({city: {name}}) => uniqCities.add(name));
 
-    return Array.from(uniqCities);
-  }
+      return Array.from(uniqCities);
+    }
 );
 
 

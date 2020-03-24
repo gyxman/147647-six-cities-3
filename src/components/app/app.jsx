@@ -1,12 +1,12 @@
 import React, {PureComponent} from 'react';
-import PropTypes from "prop-types";
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Main from '../main/main.jsx';
 import {PlaceCardDetails} from '../place-card-details/place-card-details.jsx';
 import {connect} from "react-redux";
-import {getFilteredOffers, getOffers, getOffers2} from "../../reducer/data/selectors";
+import {getFilteredOffers} from "../../reducer/data/selectors";
 import {getCities, getCity, getSort} from "../../reducer/app/selectors";
 import {ActionCreator} from "../../reducer/app/app";
+import PropTypes from "prop-types";
 
 class App extends PureComponent {
   constructor(props) {
@@ -37,12 +37,11 @@ class App extends PureComponent {
     }
 
     if (offer) {
-      return (<div />
-        /*<PlaceCardDetails
+      return (
+        <PlaceCardDetails
           offer={offer}
-          neighbourhoods={neighbourhoods}
           onOfferTitleClick={this._offerTitleClickHandler.bind(this)}
-        />*/
+        />
       );
     }
 
@@ -88,7 +87,17 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
+App.propTypes = {
+  cities: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  city: PropTypes.string.isRequired,
+  offers: PropTypes.array.isRequired,
+  sort: PropTypes.string.isRequired,
+  onOfferTitleClick: PropTypes.func.isRequired,
+  onCityLinkClick: PropTypes.func.isRequired,
+  onSortButtonClick: PropTypes.func.isRequired,
+};
+
 export {App};
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps)(App);
+    mapStateToProps,
+    mapDispatchToProps)(App);

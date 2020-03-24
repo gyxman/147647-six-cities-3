@@ -20,10 +20,10 @@ exports[`Если приложение загрузилось, то компон
       href="#"
     >
       <img
-        alt="Beautiful & luxurious apartment at great location"
+        alt="Amazing and Extremely Central Flat"
         className="place-card__image"
         height="200"
-        src="img"
+        src="https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/4.jpg"
         width="260"
       />
     </a>
@@ -41,13 +41,12 @@ exports[`Если приложение загрузилось, то компон
           className="place-card__price-value"
         >
           €
-          120
+          348
         </b>
         <span
           className="place-card__price-text"
         >
-          / 
-          night
+          / night
         </span>
       </div>
       <button
@@ -79,7 +78,7 @@ exports[`Если приложение загрузилось, то компон
         <span
           style={
             Object {
-              "width": "60%",
+              "width": "40%",
             }
           }
         />
@@ -97,13 +96,13 @@ exports[`Если приложение загрузилось, то компон
       <a
         href="#"
       >
-        Beautiful & luxurious apartment at great location
+        Amazing and Extremely Central Flat
       </a>
     </h2>
     <p
       className="place-card__type"
     >
-      Apartment
+      apartment
     </p>
   </div>
 </article>

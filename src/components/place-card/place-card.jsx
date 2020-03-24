@@ -9,7 +9,7 @@ export class PlaceCard extends PureComponent {
   render() {
     const {onOfferTitleHover, onOfferTitleClick, offer, className} = this.props;
 
-    const {title, preview_image, price, type, is_premium, rating} = offer;
+    const {title, previewImage, price, type, isPremium, rating} = offer;
     const fixRating = (Math.round(rating) / 5) * 100;
 
     return (
@@ -18,7 +18,7 @@ export class PlaceCard extends PureComponent {
         onMouseEnter={() => onOfferTitleHover(offer)}
         onMouseLeave={() => onOfferTitleHover(null)}
       >
-        {is_premium && (
+        {isPremium && (
           <div className="place-card__mark">
             <span>Premium</span>
           </div>
@@ -27,7 +27,7 @@ export class PlaceCard extends PureComponent {
           <a href="#">
             <img
               className="place-card__image"
-              src={preview_image}
+              src={previewImage}
               width="260"
               height="200"
               alt={title}
@@ -66,6 +66,13 @@ export class PlaceCard extends PureComponent {
 PlaceCard.propTypes = {
   onOfferTitleHover: PropTypes.func.isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
-  offer: PropTypes.shape({}).isRequired,
-  /*className: PropTypes.string.isRequired,*/
+  offer: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    previewImage: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    type: PropTypes.string.isRequired,
+    isPremium: PropTypes.bool.isRequired,
+    rating: PropTypes.number.isRequired,
+  }).isRequired,
+  className: PropTypes.string.isRequired,
 };

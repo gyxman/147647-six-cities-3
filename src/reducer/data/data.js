@@ -1,4 +1,4 @@
-import {extend} from "../../utils";
+import {dataMapper, extend} from "../../utils";
 
 // TODO написать тесты
 const initialState = {
@@ -22,7 +22,7 @@ const Operation = {
   loadOffers: () => (dispatch, getState, api) => {
     return api.get(`/hotels`)
       .then((response) => {
-        dispatch(ActionCreator.loadOffers(response.data));
+        dispatch(ActionCreator.loadOffers(dataMapper(response.data)));
       });
   },
 };

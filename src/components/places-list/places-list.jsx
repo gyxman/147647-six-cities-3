@@ -25,6 +25,6 @@ PlacesList.propTypes = {
   onHover: PropTypes.func.isRequired,
   onSelect: PropTypes.func.isRequired,
   offers: PropTypes.array.isRequired,
-/*  className: PropTypes.string.isRequired,*/
+  className: PropTypes.string.isRequired,
   isTabs: PropTypes.bool.isRequired,
 };

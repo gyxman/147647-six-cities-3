@@ -46,17 +46,17 @@ class Main extends PureComponent {
           </b>
           <Sort onSortButtonClick={onSortButtonClick}/>
           <PlacesListWrapped className={`cities__places-`}
-                             isTabs={true}
-                             offers={getSortedOffers(sort, offers)}
-                             onHover={this._offerTitleHoverHandler.bind(this)}
-                             onSelect={this._offerTitleClickHandler.bind(this)}/>
+            isTabs={true}
+            offers={getSortedOffers(sort, offers)}
+            onHover={this._offerTitleHoverHandler.bind(this)}
+            onSelect={this._offerTitleClickHandler.bind(this)}/>
         </section>
         <div className="cities__right-section">
-          {/*<Map
+          <Map
             className={`cities__map`}
-            offers={offersByCity.map((offer) => offer.coords)}
-            activeOffer={activeOffer ? activeOffer.coords : activeOffer}
-          />*/}
+            offers={offers.map((offer) => offer.location)}
+            activeOffer={activeOffer ? activeOffer.location : activeOffer}
+          />
         </div>
       </div>);
     }
@@ -92,11 +92,11 @@ class Main extends PureComponent {
 Main.propTypes = {
   cities: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   city: PropTypes.string.isRequired,
+  offers: PropTypes.array.isRequired,
+  sort: PropTypes.string.isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
   onCityLinkClick: PropTypes.func.isRequired,
-  offers: PropTypes.array.isRequired,
   onSortButtonClick: PropTypes.func.isRequired,
-  sort: PropTypes.string.isRequired,
 };
 
 export default Main;

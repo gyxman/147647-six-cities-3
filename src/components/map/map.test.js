@@ -3,7 +3,7 @@ import renderer from "react-test-renderer";
 import {Map} from "./map.jsx";
 
 const mock = [
-  [52.3809553943508, 4.939309666406198]
+  {latitude: 50.846557, longitude: 4.351697, zoom: 13}
 ];
 
 it(`Если приложение загрузилось, то компонент Map отрисовался`, () => {
