@@ -64,10 +64,10 @@ it(`Если приложение загрузилось, то компонен�
   const tree = renderer
     .create(
         <Provider store={store}>
-          <App cities={[`Амстердам`]} city={`Амстердам`} sort={`popular`} offers={mock} onCityLinkClick={() => {
+          <App cities={[`Амстердам`]} city={`Амстердам`} sort={`popular`} offers={mock} authStatus={`auth`} onCityLinkClick={() => {
           }} onSortButtonClick={() => {
           }} onOfferTitleClick={() => {
-          }}/>
+          }} login={() => {}}/>
         </Provider>,
         {
           createNodeMock: () => document.createElement(`div`),
