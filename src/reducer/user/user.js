@@ -1,7 +1,4 @@
-const AuthorizationStatus = {
-  AUTH: `AUTH`,
-  NO_AUTH: `NO_AUTH`,
-};
+import {AuthorizationStatus} from "../../enums/authorization-status.enum";
 
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
