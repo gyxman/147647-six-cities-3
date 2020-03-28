@@ -12,3 +12,5 @@ export const getFilteredOffers = createSelector(
       return offers.filter(({city: {name}}) => name === city);
     }
 );
+
+export const getFavorites = (state) => state[NameSpace.DATA].favorites;

@@ -147,31 +147,21 @@ export class PlaceCardDetails extends PureComponent {
 PlaceCardDetails.propTypes = {
   offer: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    description: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    description: PropTypes.string.isRequired,
     images: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
     price: PropTypes.number.isRequired,
-    time: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     isPremium: PropTypes.bool.isRequired,
     isFavorite: PropTypes.bool.isRequired,
     rating: PropTypes.number.isRequired,
-    bedrooms: PropTypes.string.isRequired,
-    adults: PropTypes.string.isRequired,
+    bedrooms: PropTypes.number.isRequired,
+    adults: PropTypes.number.isRequired,
     goods: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
     host: PropTypes.shape({
       avatarUrl: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       isPro: PropTypes.bool.isRequired,
     }).isRequired,
-    coords: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
-    reviews: PropTypes.arrayOf(
-        PropTypes.shape({
-          name: PropTypes.string.isRequired,
-          image: PropTypes.string.isRequired,
-          rating: PropTypes.number.isRequired,
-          description: PropTypes.string.isRequired,
-          date: PropTypes.string.isRequired,
-        })).isRequired,
   }).isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
 };

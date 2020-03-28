@@ -33,6 +33,8 @@ class Main extends PureComponent {
       offers,
       onSortButtonClick,
       sort,
+      favorites,
+      onBookmark
     } = this.props;
 
     const {activeOffer} = this.state;
@@ -48,8 +50,10 @@ class Main extends PureComponent {
           <PlacesListWrapped className={`cities__places-`}
             isTabs={true}
             offers={getSortedOffers(sort, offers)}
+            favorites={favorites}
             onHover={this._offerTitleHoverHandler.bind(this)}
-            onSelect={this._offerTitleClickHandler.bind(this)}/>
+            onSelect={this._offerTitleClickHandler.bind(this)}
+            onBookmark={onBookmark} />
         </section>
         <div className="cities__right-section">
           <Map
@@ -94,9 +98,11 @@ Main.propTypes = {
   city: PropTypes.string.isRequired,
   offers: PropTypes.array.isRequired,
   sort: PropTypes.string.isRequired,
+  favorites: PropTypes.shape({}).isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
   onCityLinkClick: PropTypes.func.isRequired,
   onSortButtonClick: PropTypes.func.isRequired,
+  onBookmark: PropTypes.func.isRequired,
 };
 
 export default Main;

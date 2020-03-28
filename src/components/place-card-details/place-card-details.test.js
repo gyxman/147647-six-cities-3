@@ -12,7 +12,7 @@ const mock = {
   rating: 2.2,
   type: `apartment`,
   bedrooms: 4,
-  maxAdults: 7,
+  adults: 7,
   price: 348,
   goods: [`Breakfast`, `Washer`, `Laptop friendly workspace`],
   host: {id: 25, name: `Angelina`, avatarUrl: `img/avatar-angelina.jpg`, isPro: true},

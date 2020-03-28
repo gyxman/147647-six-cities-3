@@ -215,7 +215,9 @@ exports[`Если приложение загрузилось, то компон
           </li>
           <li
             className="property__feature property__feature--adults"
-          />
+          >
+            7
+          </li>
         </ul>
         <div
           className="property__price"
