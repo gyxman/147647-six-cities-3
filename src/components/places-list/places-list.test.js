@@ -55,6 +55,8 @@ it(`Если приложение загрузилось, то компонен�
       onSelect={() => {}}
       className={`cities__places-`}
       isTabs={true}
+      favorites={{}}
+      onBookmark={() => {}}
     />)
     .toJSON();
 

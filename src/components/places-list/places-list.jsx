@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {PlaceCard} from '../place-card/place-card.jsx';
 
 export const PlacesList = (props) => {
-  const {onHover, onSelect, offers, className, isTabs} = props;
+  const {onHover, onSelect, offers, favorites, className, isTabs, onBookmark} = props;
 
   // переделать классы
   return (
@@ -13,8 +13,10 @@ export const PlacesList = (props) => {
           key={`${i}-${offer.name}`}
           className={isTabs ? `cities__place-` : `near-places__`}
           offer={offer}
+          isFavorite={!!favorites[offer.id]}
           onOfferTitleHover={onHover}
           onOfferTitleClick={onSelect}
+          onBookmarkButtonClick={onBookmark}
         />
       ))}
     </div>
@@ -24,7 +26,9 @@ export const PlacesList = (props) => {
 PlacesList.propTypes = {
   onHover: PropTypes.func.isRequired,
   onSelect: PropTypes.func.isRequired,
+  onBookmark: PropTypes.func.isRequired,
   offers: PropTypes.array.isRequired,
+  favorites: PropTypes.shape({}).isRequired,
   className: PropTypes.string.isRequired,
   isTabs: PropTypes.bool.isRequired,
 };

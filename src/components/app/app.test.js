@@ -67,7 +67,7 @@ it(`Если приложение загрузилось, то компонен�
           <App cities={[`Амстердам`]} city={`Амстердам`} sort={`popular`} offers={mock} authStatus={`auth`} onCityLinkClick={() => {
           }} onSortButtonClick={() => {
           }} onOfferTitleClick={() => {
-          }} login={() => {}}/>
+          }} login={() => {}} favorites={{}} onBookmark={() =>{}}/>
         </Provider>,
         {
           createNodeMock: () => document.createElement(`div`),

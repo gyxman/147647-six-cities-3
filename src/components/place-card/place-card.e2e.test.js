@@ -40,6 +40,8 @@ describe(`Тестирование поведения пользователя �
           onOfferTitleClick={() => {}}
           onOfferTitleHover={onOfferTitleHover}
           className={`cities__place-`}
+          isFavorite={false}
+          onBookmarkButtonClick={() => {}}
         />
     );
 
@@ -62,6 +64,8 @@ describe(`Тестирование поведения пользователя �
           onOfferTitleHover={() => {}}
           onOfferTitleClick={onOfferTitleClick}
           className={`cities__place-`}
+          isFavorite={true}
+          onBookmarkButtonClick={() => {}}
         />
     );
 

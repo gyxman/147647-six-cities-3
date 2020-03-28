@@ -31,6 +31,8 @@ it(`Если приложение загрузилось, то компонен�
       onOfferTitleHover={() => {}}
       onOfferTitleClick={() => {}}
       className={`cities__place-`}
+      isFavorite={false}
+      onBookmarkButtonClick={() => {}}
     />)
     .toJSON();
 

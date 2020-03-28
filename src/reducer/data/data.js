@@ -3,10 +3,12 @@ import {dataMapper, extend} from "../../utils";
 // TODO написать тесты
 const initialState = {
   offers: [],
+  favorites: {},
 };
 
 const ActionType = {
   LOAD_OFFERS: `LOAD_OFFERS`,
+  CHANGE_FAVORITES: `CHANGE_FAVORITES`,
 };
 
 const ActionCreator = {
@@ -16,6 +18,10 @@ const ActionCreator = {
       payload: offers,
     };
   },
+  changeFavorites: (favorite) => ({
+    type: ActionType.CHANGE_FAVORITES,
+    payload: favorite,
+  }),
 };
 
 const Operation = {
@@ -33,6 +39,20 @@ const reducer = (state = initialState, action) => {
       return extend(state, {
         offers: action.payload,
       });
+    case ActionType.CHANGE_FAVORITES:
+    {
+      const favorites = extend(state.favorites, {});
+
+      if (state.favorites[action.payload]) {
+        delete favorites[action.payload];
+      } else {
+        favorites[action.payload] = true;
+      }
+
+      return extend(state, {
+        favorites,
+      });
+    }
   }
 
   return state;

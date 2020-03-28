@@ -58,6 +58,8 @@ it(`Если приложение загрузилось, то компонен�
           onCityLinkClick={() => {}}
           onSortButtonClick={() => {}}
           sort={`Popular`}
+          favorites={{}}
+          onBookmark={() => {}}
         />,
         {
           createNodeMock: () => document.createElement(`div`),
@@ -77,6 +79,8 @@ it(`Если приложение загрузилось, но список пр
           onCityLinkClick={() => {}}
           onSortButtonClick={() => {}}
           sort={`Popular`}
+          favorites={{}}
+          onBookmark={() => {}}
         />,
         {
           createNodeMock: () => document.createElement(`div`),
