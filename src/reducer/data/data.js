@@ -21,7 +21,7 @@ const ActionCreator = {
   changeFavorites: (favorite) => ({
     type: ActionType.CHANGE_FAVORITES,
     payload: favorite,
-  }),
+  })
 };
 
 const Operation = {
@@ -29,6 +29,19 @@ const Operation = {
     return api.get(`/hotels`)
       .then((response) => {
         dispatch(ActionCreator.loadOffers(dataMapper(response.data)));
+      });
+  },
+
+  addComment: ({id, comment, rating, addError, addSuccess}) => (dispatch, getState, api) => {
+    return api.post(`/comments/${id}`, {
+      comment,
+      rating
+    })
+      .then(() => {
+        addSuccess();
+      }).catch((err) => {
+        addError(err.response.data.error);
+        throw err;
       });
   },
 };

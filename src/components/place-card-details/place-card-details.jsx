@@ -1,7 +1,11 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import {ReviewsList} from "../reviews-list/reviews-list.jsx";
+import CommentForm from "../comment-form/comment-form.jsx";
+import withCommentForm from "../../hocs/withCommentForm/with-comment-form.js";
 
 // const PlacesListWrapped = withActiveItem(PlacesList);
+const CommentFormWrapped = withCommentForm(CommentForm);
 
 export class PlaceCardDetails extends PureComponent {
   constructor(props) {
@@ -21,9 +25,10 @@ export class PlaceCardDetails extends PureComponent {
   }
 
   render() {
-    const {offer} = this.props;
+    const {offer, addComment} = this.props;
     // const {activeOffer} = this.state;
     const {
+      id,
       title,
       description,
       images,
@@ -119,7 +124,11 @@ export class PlaceCardDetails extends PureComponent {
                   {description}
                 </div>
               </div>
-              {/* <ReviewsList reviews={reviews} /> */}
+              <section className="property__reviews reviews">
+                <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">1</span></h2>
+                <ReviewsList reviews={[]} />
+                <CommentFormWrapped id={id} addComment={addComment} />
+              </section>
             </div>
           </div>
           {/* TODO вывести карту и туда предложения рядом */}
@@ -146,6 +155,7 @@ export class PlaceCardDetails extends PureComponent {
 
 PlaceCardDetails.propTypes = {
   offer: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     images: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
@@ -163,5 +173,6 @@ PlaceCardDetails.propTypes = {
       isPro: PropTypes.bool.isRequired,
     }).isRequired,
   }).isRequired,
+  addComment: PropTypes.func.isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
 };
