@@ -29,6 +29,7 @@ it(`Если приложение загрузилось, то компонен�
     .create(<PlaceCardDetails
       offer={mock}
       onOfferTitleClick={() => {}}
+      addComment={() => {}}
     />, {
       createNodeMock: () => document.createElement(`div`)
     })

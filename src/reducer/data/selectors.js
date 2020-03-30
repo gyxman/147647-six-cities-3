@@ -14,3 +14,5 @@ export const getFilteredOffers = createSelector(
 );
 
 export const getFavorites = (state) => state[NameSpace.DATA].favorites;
+
+export const getCommentError = (state) => state[NameSpace.DATA].commentError;

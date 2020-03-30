@@ -6,7 +6,7 @@ import {connect} from "react-redux";
 import {getFavorites, getFilteredOffers} from "../../reducer/data/selectors";
 import {getCities, getCity, getSort} from "../../reducer/app/selectors";
 import {ActionCreator as ActionCreatorApp} from "../../reducer/app/app";
-import {ActionCreator as ActionCreatorData} from "../../reducer/data/data";
+import {ActionCreator as ActionCreatorData, Operation as OperationData} from "../../reducer/data/data";
 import PropTypes from "prop-types";
 import {SignIn} from "../sign-in/sign-in.jsx";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
@@ -25,7 +25,7 @@ class App extends PureComponent {
   }
 
   _renderApp() {
-    const {cities, offers, city, sort, favorites, onCityLinkClick, onSortButtonClick, onBookmark} = this.props;
+    const {cities, offers, city, sort, favorites, onCityLinkClick, onSortButtonClick, onBookmark, addComment} = this.props;
     const {place} = this.state;
     const offer = offers[place];
 
@@ -49,6 +49,7 @@ class App extends PureComponent {
       return (
         <PlaceCardDetails
           offer={offer}
+          addComment={addComment}
           onOfferTitleClick={this._offerTitleClickHandler.bind(this)}
         />
       );
@@ -113,6 +114,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   onBookmark(id) {
     dispatch(ActionCreatorData.changeFavorites(id));
+  },
+
+  addComment(data) {
+    dispatch(OperationData.addComment(data));
   }
 });
 
@@ -126,6 +131,7 @@ App.propTypes = {
   onSortButtonClick: PropTypes.func.isRequired,
   authStatus: PropTypes.string.isRequired,
   login: PropTypes.func.isRequired,
+  addComment: PropTypes.func.isRequired,
   onBookmark: PropTypes.func.isRequired,
 };
 
